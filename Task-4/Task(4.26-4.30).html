@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Lists Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #f3f4f6; 
+            color: #374151;
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 2rem auto; 
+            padding: 2rem; 
+            background-color: white; 
+            border-radius: 0.75rem; 
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); 
+        }
+        .section { 
+            padding: 1.5rem; 
+            margin-bottom: 1.5rem; 
+            border: 1px solid #e5e7eb; 
+            border-radius: 0.5rem; 
+        }
+        .section-title { 
+            font-weight: 600; 
+            font-size: 1.25rem;
+            color: #1f2937; 
+            margin-bottom: 1rem; 
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        dt {
+            font-weight: 500;
+            color: #111827;
+        }
+        dd {
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: #4b5563;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">HTML Lists Showcase</h1>
+
+        <!-- 1. Ordered List -->
+        <div class="section">
+            <h2 class="section-title">1. Top 5 Favorite Movies (Ordered List)</h2>
+            <ol class="list-decimal list-inside">
+                <li>The Shawshank Redemption</li>
+                <li>The Godfather</li>
+                <li>The Dark Knight</li>
+                <li>Pulp Fiction</li>
+                <li>Forrest Gump</li>
+            </ol>
+        </div>
+
+        <!-- 2. Unordered List -->
+        <div class="section">
+            <h2 class="section-title">2. Grocery Items (Unordered List)</h2>
+            <ul class="list-disc list-inside">
+                <li>Milk</li>
+                <li>Bread</li>
+                <li>Eggs</li>
+                <li>Apples</li>
+                <li>Cheese</li>
+            </ul>
+        </div>
+
+        <!-- 3. Definition List -->
+        <div class="section">
+            <h2 class="section-title">3. Web Technologies (Definition List)</h2>
+            <dl>
+                <dt>HTML</dt>
+                <dd>HyperText Markup Language, the standard markup language for documents designed to be displayed in a web browser.</dd>
+                <dt>CSS</dt>
+                <dd>Cascading Style Sheets, a style sheet language used for describing the presentation of a document written in a markup language like HTML.</dd>
+                <dt>JavaScript</dt>
+                <dd>A programming language that enables interactive web pages and is an essential part of web applications.</dd>
+            </dl>
+        </div>
+
+        <!-- 4. Nested List -->
+        <div class="section">
+            <h2 class="section-title">4. Learning Roadmap (Nested List)</h2>
+            <ul class="list-disc list-inside">
+                <li>Frontend Development
+                    <ol class="list-decimal list-inside ml-8 mt-2">
+                        <li>Learn HTML</li>
+                        <li>Learn CSS</li>
+                        <li>Learn JavaScript</li>
+                        <li>Learn a Framework (like React or Vue)</li>
+                    </ol>
+                </li>
+                <li>Backend Development</li>
+            </ul>
+        </div>
+
+        <!-- 5. To-Do List with <del> -->
+        <div class="section">
+            <h2 class="section-title">5. Kishan's To-Do List</h2>
+            <ul class="list-none">
+                <li><input type="checkbox" checked disabled class="mr-2"><del>Finish HTML project</del></li>
+                <li><input type="checkbox" checked disabled class="mr-2"><del>Submit report</del></li>
+                <li><input type="checkbox" disabled class="mr-2"> Start CSS module</li>
+                <li><input type="checkbox" disabled class="mr-2"> Buy groceries</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

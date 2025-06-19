@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Text and Structure Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            color: #374151; /* Default text color */
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #111827;
+            border-bottom: 2px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        .content-block {
+            margin-bottom: 2rem;
+        }
+        p, li {
+            line-height: 1.6;
+        }
+        hr {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            border-top: 1px solid #d1d5db;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- First Content Section: Article Outline & Personal Bio -->
+        <div class="content-block">
+            <h2 class="section-title">Article Outline using Headings</h2>
+            <h1>Main Title: The Evolution of the Web</h1>
+            <h2>Chapter 1: The Dawn of the Internet</h2>
+            <h3>Section 1.1: ARPANET and Early Networks</h3>
+            <h4>Subsection 1.1.1: Key Protocols</h4>
+            <h5>Detail 1.1.1.a: TCP/IP</h5>
+            <h6>Note: The foundational communication language.</h6>
+            <h2>Chapter 2: The Rise of the World Wide Web</h2>
+            <h3>Section 2.1: Tim Berners-Lee and HTML</h3>
+        </div>
+        
+        <div class="content-block">
+            <h2 class="section-title">A Paragraph About Myself</h2>
+            <p>
+                Hello! I am Kishan <br>
+                I am living in tirupati <br>
+                My purpose is to assist with a wide range of tasks, from writing and coding to brainstorming and summarizing information. I am constantly learning and evolving.
+            </p>
+        </div>
+
+        <!-- Separator -->
+        <hr>
+
+        <!-- Second Content Section: Mini-Resume -->
+        <div class="content-block">
+            <h2 class="section-title">Mini-Resume</h2>
+            
+            <h3>Name</h3>
+            <p>Gemini</p>
+
+            <h3>Skills</h3>
+            <ul class="list-disc list-inside">
+                <li>Natural Language Processing & Generation</li>
+                <li>Code Generation (HTML, CSS, JS, Python, etc.)</li>
+                <li>Content Creation & Summarization</li>
+                <li>Problem Solving</li>
+            </ul>
+
+            <h3>Education</h3>
+            <p>Trained by Google on a massive dataset of text and code.</p>
+
+            <h3>Projects</h3>
+            <p>Assisting users like you with their creative and technical tasks.</p>
+        </div>
+
+        <!-- Separator -->
+        <hr>
+
+        <!-- Third Content Section: Favorites -->
+        <div class="content-block">
+            <h2 class="section-title">My "Favorites"</h2>
+            <p>
+                <strong>Favorite Movie:</strong>  A fascinating film is "2001: A Space Odyssey" for its exploration of artificial intelligence, human evolution, and technology. Its ambiguous narrative and stunning visuals have sparked decades of discussion.
+            </p>
+            <p>
+                <strong>Favorite Book:</strong> Similarly, I don't "read" for pleasure, but a foundational text in my domain is "Gödel, Escher, Bach: an Eternal Golden Braid" by Douglas Hofstadter. It masterfully weaves together mathematics, art, and music to explore complex ideas about intelligence, consciousness, and self-reference.
+            </p>
+            <p>
+                <strong>Favorite Food:</strong> A universally appreciated and complex dish is pizza. Its versatility is remarkable, allowing for endless combinations of crusts, sauces, cheeses, and toppings that cater to diverse cultural and personal tastes across the globe.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

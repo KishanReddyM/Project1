@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Links Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #374151;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .link-section {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+        }
+        .link-title {
+            font-weight: 600;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+        .link-style {
+            color: #2563eb;
+            text-decoration: underline;
+            transition: color 0.2s;
+        }
+        .link-style:hover {
+            color: #1d4ed8;
+        }
+        #section-jump-target {
+            padding-top: 4rem; /* Add padding to see the jump clearly */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">HTML Links Showcase</h1>
+
+        <!-- 1. External Link -->
+        <div class="link-section">
+            <p class="link-title">1. External Link to Google</p>
+            <a href="https://www.google.com" target="_blank" class="link-style">
+                Visit Google
+            </a>
+            <p class="text-sm text-gray-500 mt-2">This is a standard anchor tag `<a>` linking to an external website.</p>
+        </div>
+
+        <!-- 2. Internal Anchor Link -->
+        <div class="link-section">
+            <p class="link-title">2. Internal Anchor Link</p>
+            <a href="#section-jump-target" class="link-style">
+                Jump to the "Destination" section on this page
+            </a>
+             <p class="text-sm text-gray-500 mt-2">This link's `href` starts with a `#` to target an element's `id` on the same page.</p>
+        </div>
+
+        <!-- 3. Email Link -->
+        <div class="link-section">
+            <p class="link-title">3. Email Link</p>
+            <a href="mailto:kishan@example.com" class="link-style">
+                Send an email to Kishan
+            </a>
+            <p class="text-sm text-gray-500 mt-2">The `mailto:` protocol opens the user's default email client.</p>
+        </div>
+
+        <!-- 4. Phone Link -->
+        <div class="link-section">
+            <p class="link-title">4. Phone Link</p>
+            <a href="tel:+911234567890" class="link-style">
+                Call +91 12345-67890
+            </a>
+            <p class="text-sm text-gray-500 mt-2">The `tel:` protocol prompts the user to call the number, especially on mobile devices.</p>
+        </div>
+
+        <!-- 5. Clickable Image Link -->
+        <div class="link-section">
+            <p class="link-title">5. Clickable Image Link</p>
+            <a href="https://en.wikipedia.org/" target="_blank">
+                <img 
+                    src="https://placehold.co/400x200/6366f1/ffffff?text=Click+Me!" 
+                    alt="A placeholder image that is a clickable link"
+                    class="rounded-lg shadow-md hover:opacity-80 transition-opacity max-w-full h-auto">
+            </a>
+             <p class="text-sm text-gray-500 mt-2">To make an image a link, simply wrap the `<img>` tag inside an `<a>` tag.</p>
+        </div>
+
+        <!-- Destination for the internal link -->
+        <div id="section-jump-target" class="link-section bg-blue-50">
+            <h2 class="text-2xl font-semibold text-blue-800">Destination Section</h2>
+            <p>You have successfully jumped to this section using the internal anchor link.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Elements Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* A light gray background */
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .element-section {
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+        }
+        .element-title {
+            font-weight: 600;
+            color: #4b5563;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">HTML Elements Showcase</h1>
+
+        <!-- 1. Heading with a Tooltip -->
+        <div class="element-section">
+            <p class="element-title">1. Heading with a Tooltip</p>
+            <h2 class="text-2xl font-semibold text-gray-700" title="This is a tooltip!">Hover over me!</h2>
+            <p class="text-sm text-gray-500 mt-2">The 'title' attribute creates a tooltip that appears when you hover over the element.</p>
+        </div>
+
+        <!-- 2. Image with Attributes -->
+        <div class="element-section">
+            <p class="element-title">2. Image with Attributes</p>
+            <img 
+                src="https://placehold.co/600x300/3498db/ffffff?text=Sample+Image" 
+                alt="A placeholder image" 
+                width="600" 
+                height="300"
+                class="rounded-lg shadow-md max-w-full h-auto">
+             <p class="text-sm text-gray-500 mt-2">'src' defines the image source, 'alt' provides alternate text, and 'width'/'height' set dimensions.</p>
+        </div>
+
+        <!-- 3. Link opening in a new tab -->
+        <div class="element-section">
+            <p class="element-title">3. Link Opening in a New Tab</p>
+            <a 
+                href="https://www.google.com" 
+                target="_blank" 
+                class="text-blue-600 hover:text-blue-800 underline transition-colors">
+                Click here to visit Google in a new tab
+            </a>
+            <p class="text-sm text-gray-500 mt-2">'target="_blank"' instructs the browser to open the link in a new browser tab.</p>
+        </div>
+
+        <!-- 4. Paragraph with blue, centered text -->
+        <div class="element-section">
+            <p class="element-title">4. Paragraph with Blue, Centered Text</p>
+            <p style="color:blue; text-align:center;" class="text-lg">
+                This paragraph is blue and center-aligned using the style attribute.
+            </p>
+            <p class="text-sm text-gray-500 mt-2">The 'style' attribute is used here for inline CSS to change text color and alignment.</p>
+        </div>
+
+        <!-- 5. Paragraph with a background color -->
+        <div class="element-section">
+            <p class="element-title">5. Paragraph with Background Color</p>
+            <p style="background-color:powderblue;" class="p-4 rounded-md">
+                This paragraph has a light blue background color, also set with the style attribute.
+            </p>
+             <p class="text-sm text-gray-500 mt-2">Here, the 'style' attribute's 'background-color' property changes the element's background.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

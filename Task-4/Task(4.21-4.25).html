@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Images Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; }
+        .container { max-width: 800px; margin: 2rem auto; padding: 2rem; background-color: white; border-radius: 0.75rem; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1); }
+        .section { padding: 1.5rem; margin-bottom: 1.5rem; border: 1px solid #e5e7eb; border-radius: 0.5rem; }
+        .section-title { font-weight: 600; color: #4b5563; margin-bottom: 1rem; }
+        img { border-radius: 0.5rem; max-w: 100%; height: auto; }
+        hr { margin: 2rem 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">HTML Images Showcase</h1>
+
+        <!-- 1. Favorite Destination Image -->
+        <div class="section">
+            <p class="section-title">1. Favorite Destination</p>
+            <img src="beach.jpg" alt="A beautiful tropical beach" style="width:300px;">
+        </div>
+
+        <!-- 2. Three Images in a Row -->
+        <div class="section">
+            <p class="section-title">2. Three Images in a Row</p>
+            <div class="flex flex-wrap gap-4">
+                <img src="https://placehold.co/150x100/f87171/ffffff?text=One" alt="Image One" width="150" height="100">
+                <img src="https://placehold.co/150x100/fbbf24/ffffff?text=Two" alt="Image Two" width="150" height="100">
+                <img src="https://placehold.co/150x100/a3e635/ffffff?text=Three" alt="Image Three" width="150" height="100">
+            </div>
+        </div>
+
+        <!-- 3. Image with Missing Source -->
+        <div class="section">
+            <p class="section-title">3. Image with Missing 'src'</p>
+            <img src="path/to/nonexistent-image.jpg" alt="Meaningful alt text: A diagram of the solar system.">
+        </div>
+
+        <!-- 4. Image with a Caption -->
+        <div class="section">
+            <p class="section-title">4. Image with a Caption</p>
+            <figure class="text-center">
+                <img src="7685662.jpg" alt="Modern architecture with clean lines." class="mx-auto">
+                <figcaption class="text-sm text-gray-600 mt-2">This is a caption using &lt;figcaption&gt;.</figcaption>
+            </figure>
+        </div>
+
+        <!-- 5. Simple Image Gallery -->
+        <div class="section">
+            <p class="section-title">5. Simple Gallery with Separators</p>
+            <div class="text-center">
+                <img src="jungle.jpg" alt="Gallery Image 1" class="mx-auto">
+                <hr>
+                <img src="macos.jpg" alt="Gallery Image 2" class="mx-auto">
+                <hr>
+                <img src="skystar.jpg" alt="Gallery Image 3" class="mx-auto">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
