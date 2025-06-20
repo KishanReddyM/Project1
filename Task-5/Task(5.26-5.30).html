@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced HTML List Examples</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-lg space-y-12">
+
+        <h1 class="text-3xl font-bold text-center text-indigo-700">Advanced HTML List Examples</h1>
+
+        <!-- 5. Mini Navigation Menu -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">1. Mini Navigation Menu</h2>
+            <nav class="bg-indigo-600 p-4 rounded-lg shadow-md">
+                <ul class="flex justify-center space-x-6">
+                    <li><a href="#home" class="text-white font-medium hover:text-indigo-200 transition">Home</a></li>
+                    <li><a href="#about" class="text-white font-medium hover:text-indigo-200 transition">About</a></li>
+                    <li><a href="#contact" class="text-white font-medium hover:text-indigo-200 transition">Contact</a></li>
+                </ul>
+            </nav>
+        </section>
+
+        <!-- 1. Ordered List (Recipe) -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">2. Ordered List: Recipe for Pasta Aglio e Olio</h2>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                    <li>Bring a large pot of salted water to a boil.</li>
+                    <li>Add 200g of spaghetti and cook according to package directions until al dente.</li>
+                    <li>While the pasta cooks, thinly slice 4-6 cloves of garlic.</li>
+                    <li>In a large pan, heat 1/4 cup of olive oil over medium heat.</li>
+                    <li>Add the garlic and a pinch of red pepper flakes, cooking until the garlic is golden (do not burn).</li>
+                    <li>Once cooked, drain the pasta, reserving a cup of the pasta water.</li>
+                    <li>Add the drained pasta to the pan with the garlic and oil. Toss to combine.</li>
+                    <li>Add a splash of reserved pasta water to create a light sauce.</li>
+                    <li>Stir in a handful of fresh parsley, season with salt, and serve immediately.</li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- 2. Nested Unordered List (Travel) -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">3. Nested List: Travel Destinations</h2>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li>
+                        Asia
+                        <ul class="list-circle list-inside ml-6 mt-1 space-y-1">
+                            <li>Japan</li>
+                            <li>Thailand</li>
+                            <li>South Korea</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Europe
+                        <ul class="list-circle list-inside ml-6 mt-1 space-y-1">
+                            <li>France</li>
+                            <li>Italy</li>
+                            <li>Spain</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+        <!-- 3. Definition List -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">4. Definition List: Web Technologies</h2>
+            <div class="bg-gray-50 p-6 rounded-lg">
+                <dl class="space-y-4">
+                    <div>
+                        <dt class="font-semibold text-gray-900">HTML</dt>
+                        <dd class="ml-4 text-gray-700">HyperText Markup Language: The standard markup language for creating web pages and web applications.</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-gray-900">CSS</dt>
+                        <dd class="ml-4 text-gray-700">Cascading Style Sheets: A style sheet language used for describing the presentation of a document written in a markup language like HTML.</dd>
+                    </div>
+                    <div>
+                        <dt class="font-semibold text-gray-900">JS</dt>
+                        <dd class="ml-4 text-gray-700">JavaScript: A programming language that enables interactive web pages and is an essential part of web applications.</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+        
+        <!-- 4. Comparison List -->
+        <section>
+            <h2 class="text-2xl font-semibold mb-4 text-gray-800 border-b pb-2">5. Comparison: Frontend vs. Backend</h2>
+            <div class="flex flex-col sm:flex-row gap-6">
+                <!-- Frontend Column -->
+                <div class="w-full sm:w-1/2 bg-blue-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">Frontend (Client-Side)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-blue-700">
+                        <li>Deals with the user interface (UI)</li>
+                        <li>What the user sees and interacts with</li>
+                        <li>Technologies: HTML, CSS, JavaScript</li>
+                        <li>Frameworks: React, Vue, Angular</li>
+                        <li>Focuses on user experience (UX)</li>
+                    </ul>
+                </div>
+                <!-- Backend Column -->
+                <div class="w-full sm:w-1/2 bg-green-50 p-6 rounded-lg">
+                    <h3 class="text-xl font-bold text-green-800 mb-3">Backend (Server-Side)</h3>
+                    <ul class="list-disc list-inside space-y-2 text-green-700">
+                        <li>Deals with the server, database, and logic</li>
+                        <li>The "brains" of the application</li>
+                        <li>Technologies: Node.js, Python, Java</li>
+                        <li>Frameworks: Express, Django, Spring</li>
+                        <li>Focuses on data, security, and performance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</body>
+</html>

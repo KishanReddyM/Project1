@@ -1,0 +1,76 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Examples for Kishan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 p-4 sm:p-6 md:p-8">
+
+    <div class="max-w-2xl mx-auto bg-white p-6 sm:p-8 rounded-xl shadow-md space-y-8">
+
+        <h1 class="text-2xl sm:text-3xl font-bold text-center text-gray-900">HTML Examples Showcase</h1>
+
+        <!-- 1. Styled Paragraph -->
+        <div class="border-t pt-6">
+            <h2 class="text-xl font-semibold mb-3 text-indigo-600">1. Styled Paragraph</h2>
+            <p style="color: green; font-size: 18px;">
+                This paragraph is styled with inline CSS. The text color is green, and the font size is set to 18 pixels. This is a great way to apply unique styles to a specific element.
+            </p>
+        </div>
+
+        <!-- 2. Image with a Tooltip -->
+        <div class="border-t pt-6">
+            <h2 class="text-xl font-semibold mb-3 text-indigo-600">2. Image with a Tooltip</h2>
+            <p class="mb-4">Hover over the image below to see the tooltip text provided by the 'title' attribute.</p>
+            <img 
+                src="https://placehold.co/400x200/a3e635/44403c?text=Hover+Over+Me"
+                alt="Placeholder image with a tooltip"
+                title="Hello Kishan! This is a tooltip message."
+                class="rounded-lg shadow-sm mx-auto">
+        </div>
+
+        <!-- 3. Anchor Tags with rel Attributes -->
+        <div class="border-t pt-6">
+            <h2 class="text-xl font-semibold mb-3 text-indigo-600">3. Anchor Tags with 'rel' Attributes</h2>
+            <p class="mb-4">These links have different 'rel' attributes that tell search engines and browsers how to handle them.</p>
+            <ul class="list-disc list-inside space-y-2">
+                <li><a href="https://example.com" rel="nofollow" class="text-blue-500 hover:underline">nofollow: Tells search engines not to follow this link.</a></li>
+                <li><a href="https://example.com" rel="noopener" target="_blank" class="text-blue-500 hover:underline">noopener: Prevents the new page from accessing window.opener.</a></li>
+                <li><a href="https://example.com" rel="noreferrer" target="_blank" class="text-blue-500 hover:underline">noreferrer: Prevents sending the referrer header to the new page.</a></li>
+            </ul>
+        </div>
+
+        <!-- 4. Clickable Phone Number -->
+        <div class="border-t pt-6">
+            <h2 class="text-xl font-semibold mb-3 text-indigo-600">4. Clickable Phone Number</h2>
+            <p class="mb-4">Clicking this link will open the phone app on a mobile device. It's also formatted to be bold.</p>
+            <p>
+                Call us at: 
+                <a href="tel:+1-555-123-4567" class="font-bold text-green-600 hover:text-green-700">
+                    <b>+1 (555) 123-4567</b>
+                </a>
+            </p>
+        </div>
+
+        <!-- 5. Image with Rounded Corners -->
+        <div class="border-t pt-6">
+            <h2 class="text-xl font-semibold mb-3 text-indigo-600">5. Image with Rounded Corners</h2>
+            <p class="mb-4">This image's corners are rounded using the 'border-radius' style property.</p>
+            <img 
+                src="https://placehold.co/400x200/7dd3fc/1e3a8a?text=Rounded+Image" 
+                alt="An image with rounded corners" 
+                style="border-radius: 25px;"
+                class="mx-auto shadow-sm">
+        </div>
+    </div>
+
+</body>
+</html>
