@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Movies & Books</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .gallery-container {
+            max-width: 960px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .item {
+            display: flex;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
+        }
+        .item-image {
+            margin-right: 20px;
+        }
+        .item-image img {
+            width: 150px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .item-details {
+            flex: 1;
+        }
+        h2 {
+            color: #3498db;
+        }
+        strong {
+            color: #e74c3c;
+        }
+        em {
+            color: #555;
+        }
+        mark {
+            background-color: #f1c40f;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        .links a {
+            text-decoration: none;
+            color: #fff;
+            background: #3498db;
+            padding: 5px 10px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .links a:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <h1>My Favorite Movies & Books Gallery</h1>
+
+        <section id="movies">
+            <h2>Favorite Movies</h2>
+
+            <div class="item">
+                <div class="item-image">
+                    <img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SY1000_CR0,0,675,1000_AL_.jpg" alt="Inception Poster">
+                </div>
+                <div class="item-details">
+                    <h2>Inception (2010)</h2>
+                    <p>
+                        A thief who steals corporate secrets through the use of <em>dream-sharing technology</em> is given the inverse task of planting an idea into the mind of a C.E.O. <strong>This mind-bending thriller</strong> from director Christopher Nolan is a visual and narrative masterpiece.
+                    </p>
+                    <p>Rating: <mark>IMDb 8.8/10</mark></p>
+                    <h4>Key Characters:</h4>
+                    <ul>
+                        <li>Dom Cobb (The Extractor)</li>
+                        <li>Arthur (The Point Man)</li>
+                        <li>Ariadne (The Architect)</li>
+                        <li>Eames (The Forger)</li>
+                    </ul>
+                    <div class="links">
+                        <a href="https://www.imdb.com/title/tt1375666/" target="_blank">IMDb</a>
+                        <a href="https://www.youtube.com/watch?v=YoHD9XEInc0" target="_blank">YouTube Trailer</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-image">
+                    <img src="https://m.media-amazon.com/images/M/MV5BNDE3ODcxYzMtY2YzZC00NmNlLWJiNDMtZDViZWM2MzIxZDYwXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_SY1000_CR0,0,675,1000_AL_.jpg" alt="The Shawshank Redemption Poster">
+                </div>
+                <div class="item-details">
+                    <h2>The Shawshank Redemption (1994)</h2>
+                    <p>
+                        Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency. <em>Based on a Stephen King novella</em>, this film is a powerful testament to <strong>hope and the endurance of the human spirit</strong>.
+                    </p>
+                    <p>Rating: <small>IMDb 9.3/10</small></p>
+                    <h4>Memorable Elements:</h4>
+                    <ol>
+                        <li>Andy Dufresne's escape</li>
+                        <li>The library project</li>
+                        <li>"Brooks was here"</li>
+                        <li>The final reunion in Zihuatanejo</li>
+                    </ol>
+                    <div class="links">
+                        <a href="https://www.imdb.com/title/tt0111161/" target="_blank">IMDb</a>
+                        <a href="https://www.youtube.com/watch?v=6hB3S9bIaco" target="_blank">YouTube Trailer</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="books">
+            <h2>Favorite Books</h2>
+
+            <div class="item">
+                <div class="item-image">
+                    <img src="https://m.media-amazon.com/images/I/81a4kCNuH+L._AC_UF1000,1000_QL80_.jpg" alt="To Kill a Mockingbird Cover">
+                </div>
+                <div class="item-details">
+                    <h2>To Kill a Mockingbird</h2>
+                    <p>
+                        Written by Harper Lee, this classic novel explores themes of racial injustice and the loss of innocence in the American South. Told through the eyes of a young girl, <em>Scout Finch</em>, it remains a <strong>poignant and timely masterpiece</strong>.
+                    </p>
+                    <p>Rating: <mark>Goodreads 4.28/5</mark></p>
+                    <h4>Main Characters:</h4>
+                    <ul>
+                        <li>Scout Finch</li>
+                        <li>Atticus Finch</li>
+                        <li>Jem Finch</li>
+                        <li>Boo Radley</li>
+                    </ul>
+                    <div class="links">
+                        <a href="https://www.goodreads.com/book/show/2657.To_Kill_a_Mockingbird" target="_blank">Goodreads</a>
+                        <a href="https://www.youtube.com/watch?v=3xM8_G1p_1Q" target="_blank">Video Summary</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="item-image">
+                    <img src="https://m.media-amazon.com/images/I/71k-H-3Y85L._AC_UF1000,1000_QL80_.jpg" alt="1984 Book Cover">
+                </div>
+                <div class="item-details">
+                    <h2>1984</h2>
+                    <p>
+                        George Orwell's dystopian novel presents a chilling vision of a totalitarian future where <em>Big Brother is always watching</em>. It's a powerful warning about the dangers of censorship and government overreach, making it a <strong>profoundly influential work of political fiction</strong>.
+                    </p>
+                    <p>Rating: <small>Goodreads 4.19/5</small></p>
+                    <h4>Core Concepts:</h4>
+                    <ol>
+                        <li>Big Brother</li>
+                        <li>The Thought Police</li>
+                        <li>Newspeak</li>
+                        <li>Room 101</li>
+                    </ol>
+                    <div class="links">
+                        <a href="https://www.goodreads.com/book/show/61439040-1984" target="_blank">Goodreads</a>
+                        <a href="https://www.youtube.com/watch?v=h9J-xAenpTTM" target="_blank">Video Analysis</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+</body>
+</html>

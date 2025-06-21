@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Spice Garden - Restaurant Menu</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfaf6;
+            color: #4a4a4a;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background: #ffffff;
+            padding: 20px 40px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #b33939;
+        }
+        h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 2em;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+            margin-top: 40px;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+        }
+        .dish-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid #eee;
+        }
+        .dish-details {
+            flex-grow: 1;
+        }
+        .dish-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #3d3d3d;
+        }
+        .dish-desc {
+            font-style: italic;
+            color: #6c757d;
+        }
+        .price {
+            font-size: 1.1em;
+            text-align: right;
+        }
+        .price del {
+            color: #999;
+            margin-right: 10px;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+        .contact-info p {
+            margin: 10px 0;
+        }
+        .contact-info a {
+            color: #b33939;
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>The Spice Garden</h1>
+        <p style="text-align:center; margin-top: -10px; color: #6c757d;">Authentic Indian & Pan-Asian Cuisine</p>
+
+        <h2>Starters</h2>
+        <ul>
+            <li>
+                <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/03/veg-manchurian-gravy-recipe.jpg" alt="Gobi Manchurian" class="dish-image">
+                <div class="dish-details">
+                    <p class="dish-name">Gobi Manchurian</p>
+                    <p class="dish-desc">Crispy cauliflower florets tossed in a tangy and spicy Manchurian sauce.</p>
+                </div>
+                <div class="price">
+                    <strong>₹250</strong>
+                </div>
+            </li>
+            <li>
+                <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/07/paneer-tikka-recipe-500x500.jpg" alt="Paneer Tikka" class="dish-image">
+                <div class="dish-details">
+                    <p class="dish-name">Paneer Tikka</p>
+                    <p class="dish-desc">Cubes of paneer marinated in spices and yogurt, grilled in a tandoor.</p>
+                </div>
+                <div class="price">
+                    <strong>₹280</strong>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Mains</h2>
+        <ul>
+            <li>
+                <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2019/06/chicken-biryani-recipe-500x375.jpg" alt="Hyderabadi Chicken Biryani" class="dish-image">
+                <div class="dish-details">
+                    <p class="dish-name">Hyderabadi Chicken Biryani</p>
+                    <p class="dish-desc">Aromatic basmati rice cooked with succulent chicken and exotic spices.</p>
+                </div>
+                <div class="price">
+                    <strong>₹450</strong>
+                </div>
+            </li>
+            <li>
+                <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2020/12/paneer-butter-masala.jpg" alt="Paneer Butter Masala" class="dish-image">
+                <div class="dish-details">
+                    <p class="dish-name">Paneer Butter Masala</p>
+                    <p class="dish-desc">Soft paneer cubes simmered in a rich and creamy tomato-based gravy.</p>
+                </div>
+                <div class="price">
+                    <del>₹400</del> <strong>₹360</strong>
+                </div>
+            </li>
+            <li>
+                <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/08/dal-makhani.jpg" alt="Dal Makhani" class="dish-image">
+                <div class="dish-details">
+                    <p class="dish-name">Dal Makhani</p>
+                    <p class="dish-desc">Black lentils and kidney beans slow-cooked with butter and cream.</p>
+                </div>
+                <div class="price">
+                    <strong>₹320</strong>
+                </div>
+            </li>
+        </ul>
+
+        <h2>Desserts</h2>
+        <ul>
+            <li>
+                <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2022/02/gulab-jamun-recipe-500x500.jpg" alt="Gulab Jamun" class="dish-image">
+                <div class="dish-details">
+                    <p class="dish-name">Gulab Jamun</p>
+                    <p class="dish-desc">Soft, spongy milk-solid balls soaked in a fragrant sugar syrup.</p>
+                </div>
+                <div class="price">
+                    <strong>₹150</strong>
+                </div>
+            </li>
+            <li>
+                <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/05/gajar-ka-halwa-recipe.jpg" alt="Gajar ka Halwa" class="dish-image">
+                <div class="dish-details">
+                    <p class="dish-name">Gajar ka Halwa</p>
+                    <p class="dish-desc">A sweet pudding made from grated carrots, milk, sugar, and ghee.</p>
+                </div>
+                <div class="price">
+                    <strong>₹180</strong>
+                </div>
+            </li>
+        </ul>
+
+        <div class="contact-info">
+            <h2>Contact Us</h2>
+            <p>For reservations or takeaways, please call us:</p>
+            <p><a href="tel:+919876543210">+91 98765 43210</a></p>
+            <p>Or email us at:</p>
+            <p><a href="mailto:contact@spicegarden.com">contact@spicegarden.com</a></p>
+            <p>
+                <a href="https://www.google.com/maps/place/Renigunta,+Andhra+Pradesh" target="_blank">
+                    Find us on Google Maps
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

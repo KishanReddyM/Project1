@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Doe - Web Developer Portfolio</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Apply the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Style for the gradient text */
+        .gradient-text {
+            background-image: linear-gradient(to right, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-300">
+
+    <!-- Main Container -->
+    <div class="container mx-auto max-w-5xl px-6 py-12">
+
+        <!-- Header Section -->
+        <header class="text-center mb-16">
+            <img src="https://placehold.co/128x128/1f2937/a5b4fc?text=JD" 
+                 alt="Portrait of John Doe" 
+                 class="w-32 h-32 rounded-full mx-auto mb-6 border-4 border-gray-700 shadow-lg"
+                 onerror="this.onerror=null;this.src='https://placehold.co/128x128/e0e0e0/333333?text=Error';">
+            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+                <span class="text-white">Hi, I'm John Doe.</span><br>
+                <span class="gradient-text">I build things for the web.</span>
+            </h1>
+            <p class="text-lg text-gray-400">Creative Web Developer | Passionate about UI/UX & Open Source</p>
+        </header>
+
+        <main>
+            <!-- About Me Section -->
+            <section id="about" class="mb-20">
+                <h2 class="text-3xl font-bold text-center text-white mb-8">About Me</h2>
+                <p class="max-w-3xl mx-auto text-center leading-relaxed">
+                    I'm a self-taught developer based in Renigunta, India with a passion for creating beautiful, functional, and user-centered digital experiences. With a background in design, I bring a unique perspective to my code, ensuring that every project is not only robust but also intuitive and visually appealing. I specialize in <strong>front-end development</strong> with React and love working with modern tools like Tailwind CSS. When I'm not coding, you can find me exploring the latest tech trends or contributing to <em>open-source projects</em>.
+                </p>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="mb-20">
+                <h2 class="text-3xl font-bold text-center text-white mb-12">My Projects</h2>
+                <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    
+                    <!-- Project 1 -->
+                    <li class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <img src="https://placehold.co/600x400/374151/d1d5db?text=Project+One" 
+                             alt="Thumbnail for Project One" 
+                             class="w-full h-48 object-cover"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333333?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">E-Commerce Dashboard</h3>
+                            <p class="text-gray-400 mb-4">A complete analytics dashboard for an e-commerce platform, built with React and D3.js for data visualization.</p>
+                            <a href="#" target="_blank" class="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300">Live Demo</a>
+                        </div>
+                    </li>
+
+                    <!-- Project 2 -->
+                    <li class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <img src="https://placehold.co/600x400/374151/d1d5db?text=Project+Two" 
+                             alt="Thumbnail for Project Two" 
+                             class="w-full h-48 object-cover"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333333?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Task Management App</h3>
+                            <p class="text-gray-400 mb-4">A sleek and intuitive task manager with drag-and-drop functionality, built using Vue.js and Firebase.</p>
+                            <a href="#" target="_blank" class="inline-block bg-teal-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-teal-600 transition-colors duration-300">View on GitHub</a>
+                        </div>
+                    </li>
+
+                    <!-- Project 3 -->
+                    <li class="bg-gray-800 rounded-lg shadow-xl overflow-hidden transform hover:-translate-y-2 transition-transform duration-300 ease-in-out">
+                        <img src="https://placehold.co/600x400/374151/d1d5db?text=Project+Three" 
+                             alt="Thumbnail for Project Three" 
+                             class="w-full h-48 object-cover"
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/e0e0e0/333333?text=Image+Error';">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Personal Blog</h3>
+                            <p class="text-gray-400 mb-4">A minimalist, fully-responsive blog created with a static site generator like Hugo and styled with Tailwind CSS.</p>
+                            <a href="#" target="_blank" class="inline-block bg-blue-600 text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition-colors duration-300">Live Demo</a>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Contact Section -->
+            <section id="contact" class="text-center">
+                <h2 class="text-3xl font-bold text-white mb-6">Get In Touch</h2>
+                <p class="text-lg text-gray-400 mb-8">
+                    I'm currently looking for new opportunities. My inbox is always open, whether you have a question or just want to say hi.
+                </p>
+                <div class="flex justify-center items-center space-x-6">
+                    <a href="mailto:johndoe@example.com" class="inline-flex items-center text-lg text-blue-400 hover:text-blue-500 transition-colors duration-300">
+                        <!-- Email Icon SVG -->
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                        johndoe@example.com
+                    </a>
+                    <a href="tel:+911234567890" class="inline-flex items-center text-lg text-teal-400 hover:text-teal-500 transition-colors duration-300">
+                        <!-- Phone Icon SVG -->
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.518.758a10.024 10.024 0 006.958 6.958l.758-1.518a1 1 0 011.06-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                        (+91) 123-456-7890
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 mt-20 pt-10 border-t border-gray-800">
+            <p>&copy; 2025 John Doe. All Rights Reserved.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
