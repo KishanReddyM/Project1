@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Showcase: The Futura Ergonomic Office Chair</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Use the Inter font family defined in the head */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 antialiased">
+
+    <!-- Main container with vertical and horizontal padding -->
+    <div class="container mx-auto px-4 py-8 md:py-12">
+
+        <!-- Grid layout for product details. On medium screens and up, it's a 2-column grid. On small screens, it stacks. -->
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden md:grid md:grid-cols-2 md:gap-8">
+
+            <!-- Product Image Section -->
+            <div class="p-4 md:p-6">
+                <img 
+                    src="https://wallpapers.com/downloads/high/ergonomic-office-chair-png-06252024-vr5y2zdc8fin6vni.webp" 
+                    alt="Side view of the Futura Ergonomic Office Chair" 
+                    class="w-full h-full object-cover rounded-xl shadow-md"
+                    onerror="this.onerror=null;this.src='https://placehold.co/800x800/E2E8F0/4A5568?text=Image+Not+Found';"
+                >
+            </div>
+
+            <!-- Product Details Section -->
+            <div class="p-6 md:p-8 flex flex-col justify-center">
+                <!-- Product Title with a tooltip -->
+                <h1 
+                    class="text-3xl md:text-4xl font-bold text-gray-800 mb-3" 
+                    title="The Ultimate Chair for Comfort and Productivity"
+                >
+                    The Futura Ergonomic Office Chair
+                </h1>
+
+                <!-- Product Description -->
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Experience unparalleled comfort and support with the Futura. Designed for the modern professional, this chair combines a sleek design with a full range of adjustable features to promote healthy posture and reduce fatigue during long work hours.
+                </p>
+
+                <!-- Feature List -->
+                <h2 class="text-xl font-semibold text-gray-700 mb-3">Key Features:</h2>
+                <ul class="list-disc list-inside text-gray-600 mb-6 space-y-2">
+                    <li>Fully adjustable headrest, armrests, and lumbar support.</li>
+                    <li>Breathable mesh back to keep you cool and comfortable.</li>
+                    <li>High-density foam seat for superior all-day comfort.</li>
+                    <li>Synchronized tilt mechanism with lock and tension control.</li>
+                    <li>Durable five-star base with smooth-rolling casters.</li>
+                </ul>
+
+                <!-- Pricing Section -->
+                <div class="flex items-baseline gap-4 mb-6">
+                    <!-- ins tag for the current, discounted price -->
+                    <p class="text-4xl font-bold text-indigo-600">
+                        <!-- &#8377; is the HTML entity for the Indian Rupee Symbol (₹) -->
+                        &#8377;12,499
+                    </p>
+                    <!-- del tag for the original price -->
+                    <p class="text-xl font-medium text-gray-400 line-through">
+                        &#8377;15,999
+                    </p>
+                </div>
+
+                <!-- "Buy Now" Button -->
+                <a 
+                   href="#" 
+                   class="w-full text-center bg-indigo-600 text-white font-bold py-4 px-6 rounded-lg shadow-lg hover:bg-indigo-700 transition-transform transform hover:scale-105 ease-in-out"
+                >
+                    Buy Now
+                </a>
+
+            </div> <!-- End of Product Details Section -->
+        </div> <!-- End of Grid Layout -->
+    </div> <!-- End of Main Container -->
+
+</body>
+</html>
