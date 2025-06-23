@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive HTML Table Examples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+            background-color: #fdfdfd;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
+            color: #333;
+        }
+        h3 {
+            background-color: #e9ecef;
+            padding: 10px;
+            border-left: 5px solid #007BFF;
+            margin-top: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+        .code-block {
+            background: #23241f;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', Courier, monospace;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>All HTML Table Examples</h1>
+
+    <h2>Basic Table Structure</h2>
+
+    <h3>1. Create a table with 3 rows and 3 columns.</h3>
+    <table>
+      <tr>
+        <td>Row 1, Cell 1</td>
+        <td>Row 1, Cell 2</td>
+        <td>Row 1, Cell 3</td>
+      </tr>
+      <tr>
+        <td>Row 2, Cell 1</td>
+        <td>Row 2, Cell 2</td>
+        <td>Row 2, Cell 3</td>
+      </tr>
+      <tr>
+        <td>Row 3, Cell 1</td>
+        <td>Row 3, Cell 2</td>
+        <td>Row 3, Cell 3</td>
+      </tr>
+    </table>
+
+    <h3>2. Add table headings (&lt;th&gt;) for "Name", "Age", and "City".</h3>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>City</th>
+      </tr>
+      <tr>
+        <td>John Doe</td>
+        <td>30</td>
+        <td>New York</td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>25</td>
+        <td>London</td>
+      </tr>
+    </table>
+
+    <h3>3. Create a table showing 5 students (with border="1").</h3>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Roll No</th>
+        <th>Class</th>
+        <th>Marks</th>
+      </tr>
+      <tr>
+        <td>Arun Kumar</td>
+        <td>101</td>
+        <td>10th</td>
+        <td>85</td>
+      </tr>
+      <tr>
+        <td>Bhavna Reddy</td>
+        <td>102</td>
+        <td>10th</td>
+        <td>92</td>
+      </tr>
+      <tr>
+        <td>Chetan Sharma</td>
+        <td>103</td>
+        <td>10th</td>
+        <td>78</td>
+      </tr>
+      <tr>
+        <td>Divya Patel</td>
+        <td>104</td>
+        <td>10th</td>
+        <td>95</td>
+      </tr>
+      <tr>
+        <td>Eshwar Rao</td>
+        <td>105</td>
+        <td>10th</td>
+        <td>88</td>
+      </tr>
+    </table>
+
+    <h3>4. Use the colspan attribute to merge two cells horizontally.</h3>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th colspan="2">Contact Details</th>
+      </tr>
+      <tr>
+        <td>John Doe</td>
+        <td>john.doe@email.com</td>
+        <td>123-456-7890</td>
+      </tr>
+    </table>
+
+    <h3>5. Use the rowspan attribute to merge two cells vertically.</h3>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <td>John Doe</td>
+      </tr>
+      <tr>
+        <th rowspan="2">Contact</th>
+        <td>john.doe@email.com</td>
+      </tr>
+      <tr>
+        <td>123-456-7890</td>
+      </tr>
+    </table>
+
+    <h3>6. Create a timetable using a table.</h3>
+    <table border="1">
+      <tr style="text-align:center;">
+        <th>Day</th>
+        <th>9:00 - 10:00</th>
+        <th>10:00 - 11:00</th>
+        <th>11:00 - 12:00</th>
+        <th>12:00 - 1:00</th>
+      </tr>
+      <tr>
+        <th>Monday</th>
+        <td>Maths</td>
+        <td>Science</td>
+        <td>English</td>
+        <td rowspan="6" style="text-align:center; vertical-align:middle; background-color:#f0f0f0;"><b>Lunch</b></td>
+      </tr>
+      <tr>
+        <th>Tuesday</th>
+        <td>Science</td>
+        <td>History</td>
+        <td>Maths</td>
+      </tr>
+      <tr>
+        <th>Wednesday</th>
+        <td>English</td>
+        <td>Geography</td>
+        <td>Science</td>
+      </tr>
+      <tr>
+        <th>Thursday</th>
+        <td>Maths</td>
+        <td>English</td>
+        <td>History</td>
+      </tr>
+      <tr>
+        <th>Friday</th>
+        <td>Science</td>
+        <td>Geography</td>
+        <td>Maths</td>
+      </tr>
+      <tr>
+        <th>Saturday</th>
+        <td>English</td>
+        <td>History</td>
+        <td>Art</td>
+      </tr>
+    </table>
+
+    <h3>7. Add alternate row background colors.</h3>
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>City</th>
+      </tr>
+      <tr style="background-color:#f2f2f2;">
+        <td>John Doe</td>
+        <td>New York</td>
+      </tr>
+      <tr>
+        <td>Jane Smith</td>
+        <td>London</td>
+      </tr>
+      <tr style="background-color:#f2f2f2;">
+        <td>Peter Jones</td>
+        <td>Paris</td>
+      </tr>
+       <tr>
+        <td>Maria Garcia</td>
+        <td>Madrid</td>
+      </tr>
+    </table>
+
+    <h3>8. Create a table listing your favorite 5 movies.</h3>
+    <table border="1">
+      <tr>
+        <th>Title</th>
+        <th>Genre</th>
+        <th>Year</th>
+        <th>IMDB Rating</th>
+      </tr>
+      <tr>
+        <td>The Shawshank Redemption</td>
+        <td>Drama</td>
+        <td>1994</td>
+        <td>9.3</td>
+      </tr>
+      <tr>
+        <td>The Godfather</td>
+        <td>Crime, Drama</td>
+        <td>1972</td>
+        <td>9.2</td>
+      </tr>
+      <tr>
+        <td>The Dark Knight</td>
+        <td>Action, Crime, Drama</td>
+        <td>2008</td>
+        <td>9.0</td>
+      </tr>
+      <tr>
+        <td>Pulp Fiction</td>
+        <td>Crime, Drama</td>
+        <td>1994</td>
+        <td>8.9</td>
+      </tr>
+      <tr>
+        <td>Forrest Gump</td>
+        <td>Drama, Romance</td>
+        <td>1994</td>
+        <td>8.8</td>
+      </tr>
+    </table>
+    
+    <h3>9. Make a table with a header (&lt;thead&gt;), body (&lt;tbody&gt;), and footer (&lt;tfoot&gt;).</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Laptop</td>
+          <td>$1200</td>
+        </tr>
+        <tr>
+          <td>Mouse</td>
+          <td>$25</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td style="text-align:right; font-weight:bold;">Total</td>
+          <td style="font-weight:bold;">$1225</td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <h2>Table Styling and Layout</h2>
+
+    <h3>10. Align text to the center and add padding to cells.</h3>
+    <table border="1">
+      <tr>
+        <th style="text-align:center; padding:15px;">Name</th>
+        <th style="text-align:center; padding:15px;">Age</th>
+      </tr>
+      <tr>
+        <td style="text-align:center; padding:15px;">John Doe</td>
+        <td style="text-align:center; padding:15px;">30</td>
+      </tr>
+    </table>
+
+    <h3>11. Add an image inside a table cell.</h3>
+    <table border="1" style="vertical-align: middle;">
+      <tr>
+        <th>Product Name</th>
+        <th>Image</th>
+      </tr>
+      <tr>
+        <td style="padding:10px;">A High-End Laptop</td>
+        <td style="padding:10px; text-align:center;"><img src="https://via.placeholder.com/150x100.png?text=Laptop" alt="Laptop Image"></td>
+      </tr>
+    </table>
+
+    <h3>12. Create a product pricing table with a "Buy" link.</h3>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Buy Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Smartphone</td>
+          <td>$699</td>
+          <td style="text-align:center;"><a href="#" style="padding: 5px 10px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px;">Buy Now</a></td>
+        </tr>
+        <tr>
+          <td>Tablet</td>
+          <td>$499</td>
+          <td style="text-align:center;"><a href="#" style="padding: 5px 10px; background-color: #28a745; color: white; text-decoration: none; border-radius: 5px;">Buy Now</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>13. Add tooltips to table headings.</h3>
+    <table border="1">
+      <tr>
+        <th title="This is the full name of the person.">Name</th>
+        <th title="This is the age of the person in years.">Age</th>
+      </tr>
+      <tr>
+        <td>John Doe</td>
+        <td>30</td>
+      </tr>
+    </table>
+
+    <h3>14. Use a table to compare two smartphones.</h3>
+    <table border="1">
+      <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Smartphone A</th>
+        <th>Smartphone B</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><b>Display</b></td>
+        <td>6.5 inches AMOLED</td>
+        <td>6.7 inches Retina</td>
+      </tr>
+      <tr>
+        <td><b>Camera</b></td>
+        <td>48 MP Main Sensor</td>
+        <td>64 MP Main Sensor</td>
+      </tr>
+      <tr>
+        <td><b>Battery</b></td>
+        <td>4000 mAh</td>
+        <td>5000 mAh</td>
+      </tr>
+      <tr>
+        <td><b>Processor</b></td>
+        <td>Snapdragon 8 Gen 2</td>
+        <td>A16 Bionic</td>
+      </tr>
+      <tr>
+        <td><b>Price</b></td>
+        <td>$799</td>
+        <td>$999</td>
+      </tr>
+      </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive HTML Form Examples</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1, h2 {
+            border-bottom: 3px solid #007bff;
+            padding-bottom: 10px;
+            color: #0056b3;
+        }
+        h3 {
+            background-color: #e9ecef;
+            padding: 12px;
+            border-left: 5px solid #007bff;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        fieldset {
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        legend {
+            padding: 0 10px;
+            font-weight: bold;
+            color: #0056b3;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        input[type="number"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box; /* Important for padding and width */
+            font-size: 1rem;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0,123,255,0.25);
+        }
+        .button-group {
+            display: flex;
+            gap: 10px; /* space between buttons */
+            margin-top: 10px;
+        }
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+        }
+        input[type="reset"] {
+            background-color: #6c757d;
+            color: white;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        input[type="reset"]:hover {
+            background-color: #5a6268;
+        }
+        .radio-group label, .checkbox-group label {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: normal;
+        }
+        .radio-group input, .checkbox-group input {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>All HTML Form Examples</h1>
+
+    <!-- ====================================================== -->
+    <!--                 BASIC INPUTS AND LABELS                -->
+    <!-- ====================================================== -->
+    <h2>Basic Inputs and Labels</h2>
+
+    <h3>1. Basic Form with Fieldset, Legend, and Buttons</h3>
+    <form action="#" method="post">
+        <fieldset>
+            <legend>Contact Us</legend>
+
+            <!-- Text Input with Label and Placeholder -->
+            <label for="fullName">Full Name:</label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g., John Doe">
+
+            <!-- Email Input with Label and Placeholder -->
+            <label for="emailAddress">Email Address:</label>
+            <input type="email" id="emailAddress" name="emailAddress" placeholder="e.g., john.doe@example.com">
+
+            <!-- Textarea with Label and Placeholder -->
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Enter your message here..."></textarea>
+
+            <!-- Submit and Reset Buttons -->
+            <div class="button-group">
+                <input type="submit" value="Submit Form">
+                <input type="reset" value="Clear Form">
+            </div>
+        </fieldset>
+    </form>
+
+
+    <!-- ====================================================== -->
+    <!--                 DIFFERENT INPUT TYPES                  -->
+    <!-- ====================================================== -->
+    <h2>Different Input Types</h2>
+    
+    <form action="#" method="post">
+        <h3>2. Password, Radio Buttons, and Checkboxes</h3>
+        <fieldset>
+            <legend>User Information</legend>
+            
+            <!-- Password Field -->
+            <label for="userPassword">Password:</label>
+            <input type="password" id="userPassword" name="userPassword" placeholder="Enter a secure password">
+            
+            <!-- Radio Button Group -->
+            <div class="radio-group">
+                <p><strong>Gender:</strong></p>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+            </div>
+            
+            <!-- Checkbox Group -->
+            <div class="checkbox-group" style="margin-top: 15px;">
+                 <p><strong>Known Programming Languages:</strong></p>
+                <input type="checkbox" id="html" name="languages" value="html">
+                <label for="html">HTML</label>
+                <input type="checkbox" id="css" name="languages" value="css">
+                <label for="css">CSS</label>
+                <input type="checkbox" id="javascript" name="languages" value="javascript">
+                <label for="javascript">JavaScript</label>
+            </div>
+        </fieldset>
+
+        <h3>3. Dropdown Menu and Text Area</h3>
+        <fieldset>
+            <legend>Additional Details</legend>
+            
+            <!-- Dropdown/Select Menu -->
+            <label for="country">Country:</label>
+            <select id="country" name="country">
+                <option value="">--Please choose an option--</option>
+                <option value="usa">United States</option>
+                <option value="canada">Canada</option>
+                <option value="uk">United Kingdom</option>
+                <option value="australia">Australia</option>
+                <option value="india">India</option>
+            </select>
+            
+            <!-- Text Area -->
+            <label for="comments">Comments or Feedback:</label>
+            <textarea id="comments" name="comments" rows="5" placeholder="Any additional comments..."></textarea>
+        </fieldset>
+    </form>
+
+
+    <!-- ====================================================== -->
+    <!--             ADVANCED INPUTS & ATTRIBUTES               -->
+    <!-- ====================================================== -->
+    <h2>Advanced Inputs & Attributes</h2>
+    
+    <form id="advancedForm" action="#" method="post">
+        <h3>4. Date, Number, and File Inputs</h3>
+        <fieldset>
+            <legend>Event Registration</legend>
+
+            <!-- Date Input -->
+            <label for="eventDate">Event Date:</label>
+            <input type="date" id="eventDate" name="eventDate">
+
+            <!-- Number Input with Min/Max -->
+            <label for="tickets">Number of Tickets (1-5):</label>
+            <input type="number" id="tickets" name="tickets" min="1" max="5" placeholder="2">
+
+            <!-- File Upload -->
+            <label for="attachment">Upload Document:</label>
+            <input type="file" id="attachment" name="attachment">
+        </fieldset>
+
+        <h3>5. Validation Attributes (required, maxlength, pattern)</h3>
+        <fieldset>
+            <legend>Validated Information</legend>
+
+            <!-- Required Attribute -->
+            <label for="username">Username (required, max 8 chars):</label>
+            <input type="text" id="username" name="username" placeholder="Create a username" required maxlength="8">
+            
+            <!-- Pattern Attribute for a US Zip Code -->
+            <label for="zipcode">Zip Code (5 digits):</label>
+            <input type="text" id="zipcode" name="zipcode" placeholder="e.g., 90210" required pattern="[0-9]{5}">
+            
+        </fieldset>
+        
+        <p><strong>Note:</strong> The final form has <code>action="#"</code> and <code>method="post"</code>. You can inspect it in your browser's developer tools to see how the form data would be prepared for submission.</p>
+
+        <div class="button-group">
+            <input type="submit" value="Submit Advanced Form">
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>
