@@ -1,0 +1,18 @@
+body {
+  background-color: lightgray; /* Task 5 */
+}
+
+h2 {
+  color: green;
+  padding: 10px; /* Task 5 */
+}
+
+table td, table th {
+  padding: 10px;
+  text-align: center; /* Task 8 */
+}
+
+a:hover {
+  color: red;
+  text-decoration: underline; /* Task 9 */
+}
