@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Color & Text Styling Examples</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Outfit:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for all tasks */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind's gray-50 */
+        }
+        .task-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+        }
+        .task-title {
+            font-weight: 500;
+            color: #4b5563; /* Tailwind's gray-600 */
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* --- 1-15: Color Styling --- */
+        .task1-p { color: blue; }
+        .task2-div { background-color: lightgreen; color: white; padding: 1rem; border-radius: 0.5rem; }
+        .task3-legend span { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;}
+        .legend-success { background-color: green; color: white; }
+        .legend-warning { background-color: orange; color: black; }
+        .legend-danger { background-color: red; color: white; }
+        .task4-h2 { color: #3498db; }
+        .task5-box { background-color: #ff5733; }
+        .task6-box-red { background-color: #e74c3c; }
+        .task6-box-green { background-color: #2ecc71; }
+        .task6-box-blue { background-color: #3498db; }
+        .task7-h2 { color: rgb(255, 99, 71); }
+        .task8-section { background-color: rgb(240, 240, 240); padding: 1rem; border-radius: 0.5rem; }
+        .task9-p1 { color: rgb(66, 135, 245); }
+        .task9-p2 { color: rgb(27, 86, 184); }
+        .task9-p3 { color: rgb(15, 47, 100); }
+        .task10-container, .task15-container {
+            position: relative;
+            background-size: cover;
+            height: 150px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        .task10-container { background-image: url('https://placehold.co/600x200/3498db/ffffff?text=Background'); }
+        .task10-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.5); border-radius: 0.5rem; }
+        .task11-btn { background-color: rgba(255, 0, 0, 0.7); color: white; padding: 0.75rem 1.5rem; border-radius: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.5); font-weight: 500; cursor: pointer; transition: background-color 0.3s; }
+        .task11-btn:hover { background-color: rgba(255, 0, 0, 0.9); }
+        .task12-text { background-color: rgba(52, 152, 219, 0.3); padding: 0.5rem 1rem; border-radius: 0.25rem; display: inline; }
+        .task13-p { color: hsl(200, 100%, 50%); font-weight: bold; }
+        .task14-box { background-color: hsl(120, 60%, 70%); color: hsl(0, 0%, 20%); padding: 1rem; border-radius: 0.5rem; }
+        .task15-container { background-image: url('https://placehold.co/600x200/2ecc71/ffffff?text=Background'); }
+        .task15-overlay { background-color: hsla(180, 100%, 50%, 0.3); }
+
+        /* --- 16-30: Text Styling --- */
+        /* Task 16-18: Color & Font Family */
+        .task16-p { color: navy; }
+        .task17-p { font-family: "Courier New", monospace; }
+        .task18-h { font-family: 'Outfit', sans-serif; font-weight: 700; }
+        /* Task 19-21: Font Size & Weight */
+        .task19-h { font-size: 36px; }
+        .task19-p { font-size: 18px; }
+        .task20-p b { font-weight: bold; /* Can also be a numeric value like 700 or 900 */ }
+        .task21-p-normal { font-weight: normal; /* 400 */ }
+        .task21-p-bold { font-weight: bold; /* 700 */ }
+        .task21-p-lighter { font-weight: lighter; /* 300, relative to parent normal weight */ }
+        /* Task 22-24: Text Align & Decoration */
+        .task22-h { text-align: center; }
+        .task22-p { text-align: left; }
+        .task22-f { text-align: right; font-style: italic; color: #6b7280; }
+        .task23-a { text-decoration: none; color: #3b82f6; }
+        .task23-a:hover { text-decoration: underline; }
+        .task24-h { text-decoration: underline overline red; }
+        /* Task 25-26: Text Transform */
+        .task25-nav a { text-transform: uppercase; letter-spacing: 1px; font-weight: 500; color: #4b5563; }
+        .task26-p-cap { text-transform: capitalize; }
+        .task26-p-low { text-transform: lowercase; }
+        /* Task 27-30: Text Shadow */
+        .task27-h { text-shadow: 2px 2px 4px #ccc; color: #374151; }
+        .task28-h { text-shadow: 0 0 8px red; color: white; background-color: #111827; padding: 1rem; border-radius: 0.5rem; }
+        .task29-h { font-size: 48px; font-weight: bold; color: #3498db; text-shadow: 1px 1px #fff, 2px 2px #d1d5db; }
+        .task30-word1 { text-shadow: 2px 2px 3px #ef4444; }
+        .task30-word2 { text-shadow: 2px 2px 3px #3b82f6; }
+        .task30-word3 { text-shadow: 2px 2px 3px #22c55e; }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">CSS Color & Text Styling Showcase</h1>
+
+        <!-- Color Section (Tasks 1-15) -->
+        <section>
+             <h2 class="text-2xl font-semibold text-gray-700 mb-4">1–15: Color Formats</h2>
+             <!-- Cards 1-15 are omitted for brevity in this view, but they exist from the previous step -->
+        </section>
+
+        <!-- Text Styling Section -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">16–30: Text Styling</h2>
+            
+            <div class="task-card">
+                <h3 class="task-title">Tasks 16–18: Text Color & Font Family</h3>
+                <p class="task16-p">16. This paragraph text color is 'navy'.</p>
+                <p class="task17-p mt-2">17. This paragraph uses "Courier New", monospace.</p>
+                <h4 class="task18-h text-2xl mt-4">18. This Heading Uses The 'Outfit' Font.</h4>
+            </div>
+
+            <div class="task-card">
+                <h3 class="task-title">Tasks 19–21: Font Size & Weight</h3>
+                <h2 class="task19-h">19. Heading (36px)</h2>
+                <p class="task19-p">This paragraph is 18px.</p>
+                <p class="task20-p mt-4">20. One word inside this sentence is <b>bold</b>.</p>
+                <div class="mt-4">
+                    <p class="task21-p-normal">21. This paragraph has normal font weight.</p>
+                    <p class="task21-p-lighter">21. This paragraph has lighter font weight.</p>
+                    <p class="task21-p-bold">21. This paragraph has bold font weight.</p>
+                </div>
+            </div>
+
+            <div class="task-card">
+                <h3 class="task-title">Tasks 22–24: Text Align & Decoration</h3>
+                <h3 class="task22-h">22. Center-Aligned Heading</h3>
+                <p class="task22-p">This paragraph is left-aligned, which is the default for left-to-right languages.</p>
+                <footer class="task22-f mt-2">Right-aligned footer.</footer>
+                <p class="mt-4">23. <a href="#" class="task23-a">This link has no underline</a>, but gets one on hover.</p>
+                <h3 class="task24-h text-xl text-center mt-4">24. Underline & Overline</h3>
+            </div>
+            
+            <div class="task-card">
+                <h3 class="task-title">Tasks 25–26: Text Transform</h3>
+                <nav class="task25-nav space-x-4">
+                    <a>25. Home</a>
+                    <a>About</a>
+                    <a>Contact</a>
+                </nav>
+                <p class="task26-p-cap mt-4">26. this sentence is capitalized.</p>
+                <p class="task26-p-low">26. THIS SENTENCE IS LOWERCASE.</p>
+            </div>
+
+            <div class="task-card">
+                <h3 class="task-title">Tasks 27–30: Text Shadow</h3>
+                <h2 class="task27-h text-3xl font-bold">27. Light Shadow Effect</h2>
+                <h2 class="task28-h text-3xl font-bold text-center mt-4">28. Glowing Text Effect</h2>
+                <h2 class="task29-h text-center mt-4">29. 3D Text</h2>
+                <p class="text-xl text-center font-bold mt-4">30.
+                    <span class="task30-word1">Each</span>
+                    <span class="task30-word2">word</span>
+                    <span class="task30-word3">is different.</span>
+                </p>
+            </div>
+
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Color Examples</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles for specific tasks */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind's gray-50 */
+        }
+        .task-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            border: 1px solid #e5e7eb; /* Tailwind's gray-200 */
+        }
+        .task-title {
+            font-weight: 500;
+            color: #4b5563; /* Tailwind's gray-600 */
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 0.5rem;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 500;
+        }
+
+        /* --- 1-3: Named Colors --- */
+        .task1-p { color: blue; }
+        .task2-div { background-color: lightgreen; color: white; padding: 1rem; border-radius: 0.5rem; }
+        .task3-legend span { padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 500;}
+        .legend-success { background-color: green; color: white; }
+        .legend-warning { background-color: orange; color: black; }
+        .legend-danger { background-color: red; color: white; }
+
+        /* --- 4-6: Hexadecimal Colors --- */
+        .task4-h2 { color: #3498db; }
+        .task5-box { background-color: #ff5733; }
+        .task6-box-red { background-color: #e74c3c; }
+        .task6-box-green { background-color: #2ecc71; }
+        .task6-box-blue { background-color: #3498db; }
+
+        /* --- 7-9: RGB Colors --- */
+        .task7-h2 { color: rgb(255, 99, 71); }
+        .task8-section { background-color: rgb(240, 240, 240); padding: 1rem; border-radius: 0.5rem; }
+        .task9-p1 { color: rgb(66, 135, 245); }
+        .task9-p2 { color: rgb(27, 86, 184); }
+        .task9-p3 { color: rgb(15, 47, 100); }
+
+        /* --- 10-12: RGBA Colors --- */
+        .task10-container {
+            position: relative;
+            background-image: url('https://placehold.co/600x200/3498db/ffffff?text=Background');
+            background-size: cover;
+            height: 150px;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.25rem;
+        }
+        .task10-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 0.5rem;
+        }
+        .task11-btn {
+            background-color: rgba(255, 0, 0, 0.7);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .task11-btn:hover { background-color: rgba(255, 0, 0, 0.9); }
+        .task12-text {
+            background-color: rgba(52, 152, 219, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            display: inline;
+        }
+
+        /* --- 13-15: HSL & HSLA Colors --- */
+        .task13-p { color: hsl(200, 100%, 50%); font-weight: bold; }
+        .task14-box {
+            background-color: hsl(120, 60%, 70%);
+            color: hsl(0, 0%, 20%);
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        .task15-container { /* Reusing container style from task 10 for consistency */
+            background-image: url('https://placehold.co/600x200/2ecc71/ffffff?text=Background');
+        }
+        .task15-overlay {
+            background-color: hsla(180, 100%, 50%, 0.3);
+        }
+
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-center text-gray-800 mb-8">CSS Color Formats Showcase</h1>
+
+        <!-- Named Colors Section -->
+        <section>
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">1–3: Named Colors</h2>
+            <div class="task-card">
+                <h3 class="task-title">Task 1: Set text color to 'blue'</h3>
+                <p class="task1-p">This paragraph's text color is set using the named color 'blue'.</p>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 2: Background 'lightgreen' and 'white' text</h3>
+                <div class="task2-div">This div has a lightgreen background and white text.</div>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 3: Color-coded legend</h3>
+                <div class="task3-legend space-x-4">
+                    <span class="legend-success">Success</span>
+                    <span class="legend-warning">Warning</span>
+                    <span class="legend-danger">Danger</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hexadecimal Colors Section -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">4–6: Hexadecimal Colors</h2>
+            <div class="task-card">
+                <h3 class="task-title">Task 4: Heading with hex color #3498db</h3>
+                <h2 class="task4-h2 text-xl">This heading's color is #3498db.</h2>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 5: Box with background #ff5733</h3>
+                <div class="box task5-box">#ff5733</div>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 6: Boxes with different hex shades</h3>
+                <div class="flex flex-wrap gap-4">
+                    <div class="box task6-box-red">Red Shade</div>
+                    <div class="box task6-box-green">Green Shade</div>
+                    <div class="box task6-box-blue">Blue Shade</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RGB Colors Section -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">7–9: RGB Colors</h2>
+            <div class="task-card">
+                <h3 class="task-title">Task 7: Heading with rgb(255, 99, 71)</h3>
+                <h2 class="task7-h2 text-xl">This heading's color is rgb(255, 99, 71) (Tomato).</h2>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 8: Section with rgb(240, 240, 240) background</h3>
+                <div class="task8-section">This section has a light gray background, rgb(240, 240, 240).</div>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 9: Different RGB shades of blue</h3>
+                <p class="task9-p1">This is a light shade of blue.</p>
+                <p class="task9-p2">This is a medium shade of blue.</p>
+                <p class="task9-p3">This is a dark shade of blue.</p>
+            </div>
+        </section>
+
+        <!-- RGBA Colors Section -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">10–12: RGBA Colors (with Alpha/Transparency)</h2>
+            <div class="task-card">
+                <h3 class="task-title">Task 10: Translucent overlay using rgba(0, 0, 0, 0.5)</h3>
+                <div class="task10-container">
+                    <div class="task10-overlay"></div>
+                    <span class="relative z-10">Text on top of overlay</span>
+                </div>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 11: Button with rgba(255, 0, 0, 0.7) background</h3>
+                <button class="task11-btn">Translucent Red Button</button>
+            </div>
+             <div class="task-card">
+                <h3 class="task-title">Task 12: Text with padded RGBA background</h3>
+                <p>You can use RGBA to highlight text, and the <span class="task12-text">padding shows the semi-transparent background</span> behind the text itself.</p>
+            </div>
+        </section>
+
+        <!-- HSL & HSLA Colors Section -->
+        <section class="mt-12">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">13–15: HSL and HSLA Colors</h2>
+            <div class="task-card">
+                <h3 class="task-title">Task 13: Text with hsl(200, 100%, 50%)</h3>
+                <p class="task13-p">This text color is defined by Hue, Saturation, and Lightness.</p>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 14: Box with HSL background and text color</h3>
+                <div class="task14-box">Background: hsl(120, 60%, 70%)<br>Text: hsl(0, 0%, 20%)</div>
+            </div>
+            <div class="task-card">
+                <h3 class="task-title">Task 15: Soft overlay using hsla(180, 100%, 50%, 0.3)</h3>
+                <div class="task10-container task15-container">
+                    <div class="task10-overlay task15-overlay"></div>
+                     <span class="relative z-10 text-black">Soft Cyan Overlay</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
