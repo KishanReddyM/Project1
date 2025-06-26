@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Box Model & Backgrounds</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles to complement Tailwind and for specific task requirements */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* A light grey-blue background */
+        }
+        .task-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+        }
+        .task-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e293b; /* slate-800 */
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #e2e8f0; /* slate-200 */
+            padding-bottom: 0.5rem;
+        }
+        .task-description {
+            font-size: 0.9rem;
+            color: #64748b; /* slate-500 */
+            margin-bottom: 1.5rem;
+        }
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 500;
+            border-radius: 4px;
+        }
+        /* Style for dummy text container */
+        .text-container {
+            overflow: auto; /* Show scrollbars if content overflows */
+        }
+        .lorem-text {
+            font-size: 0.875rem;
+            color: #334155; /* slate-700 */
+            padding: 0.5rem;
+        }
+        .hero-section {
+            height: 300px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 8px;
+            background-image: url('https://placehold.co/1200x300/334155/ffffff?text=Scenic+Photo');
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-6 md:p-8">
+
+    <header class="text-center mb-10 p-6 rounded-lg" style="background-color: #e0e7ff;">
+        <h1 class="text-4xl font-bold text-slate-800">CSS Box Model & Backgrounds</h1>
+        <p class="text-slate-600 mt-2">An interactive guide to mastering CSS fundamentals.</p>
+    </header>
+
+    <main class="max-w-7xl mx-auto p-6 rounded-lg" style="background-color: #ffffff;">
+
+        <!-- Section: Width & Height -->
+        <section id="width-height">
+            <h2 class="text-2xl font-bold text-slate-700 mb-4">🔹 Width & Height</h2>
+
+            <!-- Task 1 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 1: Fixed Width & Height</h3>
+                <p class="task-description">A `div` with a fixed `width` of 300px and `height` of 200px.</p>
+                <div class="box bg-blue-500" style="width: 300px; height: 200px;">
+                    300px &times; 200px
+                </div>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 2: Side-by-Side Boxes</h3>
+                <p class="task-description">Two boxes with different widths, aligned side-by-side using `display: inline-block`.</p>
+                <div>
+                    <div class="box bg-green-500" style="width: 150px; height: 100px; display: inline-block;">Box 1</div>
+                    <div class="box bg-teal-500" style="width: 250px; height: 100px; display: inline-block;">Box 2</div>
+                </div>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 3: Percentage-Based Width</h3>
+                <p class="task-description">This box is set to `width: 50%` of its parent container. Resize the window to see it adapt.</p>
+                <div class="bg-slate-200 p-2 rounded">
+                    <div class="box bg-indigo-500" style="width: 50%; height: 100px;">50% Width</div>
+                </div>
+            </div>
+
+            <!-- Task 4 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 4: Min/Max Height</h3>
+                <p class="task-description">This box has a `min-height` of 100px and a `max-height` of 200px. It will grow with content until it hits 200px, then it will scroll.</p>
+                <div class="bg-slate-200 rounded text-container" style="min-height: 100px; max-height: 200px; width: 100%;">
+                    <p class="lorem-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Curabitur vel sem nec velit dictum fringilla. Integer eget est justo. Duis et justo non quam feugiat bibendum. Praesent vitae leo eget arcu consequat tempor. Nam nec magna vel nisi facilisis tincidunt. Vivamus in efficitur urna.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Padding -->
+        <section id="padding" class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-700 mb-4">🔹 Padding</h2>
+            
+            <!-- Task 5 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 5: Uniform Padding</h3>
+                <p class="task-description">A box with `padding: 20px` on all sides, creating space between the content and the border.</p>
+                <div class="box bg-purple-500" style="padding: 20px;">Content</div>
+            </div>
+
+            <!-- Task 6 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 6: Individual Padding</h3>
+                <p class="task-description">A box with `padding-top: 10px`, `padding-right: 20px`, `padding-bottom: 30px`, and `padding-left: 40px`.</p>
+                <div class="box bg-pink-500" style="padding-top: 10px; padding-right: 20px; padding-bottom: 30px; padding-left: 40px;">Content</div>
+            </div>
+
+            <!-- Task 7 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 7: Padding Inside a Paragraph</h3>
+                <p class="task-description">A colored box containing a paragraph with its own padding, creating visible inner spacing.</p>
+                <div class="bg-amber-300 rounded">
+                    <p class="lorem-text" style="padding: 16px; background-color: #fef3c7; border-radius: 4px;">This paragraph has its own padding.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Border -->
+        <section id="border" class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-700 mb-4">🔹 Border</h2>
+
+            <!-- Task 8 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 8: Solid Border</h3>
+                <p class="task-description">A box with a `border: 2px solid black`.</p>
+                <div class="box bg-gray-300 text-black" style="height: 100px; border: 2px solid black;">Solid Border</div>
+            </div>
+
+            <!-- Task 9 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 9: Dotted Warning Border</h3>
+                <p class="task-description">A "warning" box with a `border: 3px dotted red`.</p>
+                <div class="box bg-red-100 text-red-800" style="height: 100px; border: 3px dotted red;">Dotted Border</div>
+            </div>
+
+            <!-- Task 10 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 10: Different Border Styles</h3>
+                <p class="task-description">A box with a different border style on each side.</p>
+                <div class="box bg-cyan-100 text-cyan-800" style="height: 150px;
+                    border-top: 4px solid #0891b2; /* solid */
+                    border-right: 4px dashed #0891b2; /* dashed */
+                    border-bottom: 4px double #0891b2; /* double */
+                    border-left: 4px groove #0891b2; /* groove */
+                ">Multi-style Border</div>
+            </div>
+        </section>
+
+        <!-- Section: Margin -->
+        <section id="margin" class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-700 mb-4">🔹 Margin</h2>
+
+            <!-- Task 11 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 11: Vertical Spacing with Margin</h3>
+                <p class="task-description">The first box has `margin-bottom: 24px`, pushing the second box down.</p>
+                <div class="box bg-orange-500" style="height: 80px; margin-bottom: 24px;">Box 1</div>
+                <div class="box bg-lime-500" style="height: 80px;">Box 2</div>
+            </div>
+            
+            <!-- Task 12 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 12: Centering with Margin Auto</h3>
+                <p class="task-description">This fixed-width box (`width: 60%`) is centered horizontally using `margin: 0 auto`.</p>
+                <div class="bg-slate-200 p-2 rounded">
+                   <div class="box bg-violet-600" style="height: 80px; width: 60%; margin: 0 auto;">Centered Box</div>
+                </div>
+            </div>
+            
+            <!-- Task 13 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 13: Individual Margins</h3>
+                <p class="task-description">This box is pushed from the left by `20px` and from the top by `10px`.</p>
+                 <div class="bg-slate-200 p-2 rounded h-40">
+                   <div class="box bg-rose-500" style="height: 80px; width: 60%; margin-left: 20px; margin-top: 10px;">Pushed Around</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Box Sizing -->
+        <section id="box-sizing" class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-700 mb-4">🔹 Box Sizing</h2>
+
+            <!-- Task 14 & 15 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 14 & 15: content-box vs. border-box</h3>
+                <p class="task-description">Both boxes have `width: 100%`, `padding: 20px`, and a `10px` border. Notice how `border-box` includes padding and border within the width, preventing overflow.</p>
+                
+                <div class="mb-6">
+                    <p class="font-semibold text-slate-600 mb-2">1. `box-sizing: content-box;` (Default)</p>
+                    <div class="box bg-red-500" style="width: 100%; padding: 20px; border: 10px solid #b91c1c; box-sizing: content-box;">
+                       Total width = 100% + 40px padding + 20px border
+                    </div>
+                </div>
+                <div>
+                    <p class="font-semibold text-slate-600 mb-2">2. `box-sizing: border-box;`</p>
+                    <div class="box bg-green-500" style="width: 100%; padding: 20px; border: 10px solid #15803d; box-sizing: border-box;">
+                        Total width = 100%
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 16 -->
+            <div class="task-container">
+                 <h3 class="task-title">Task 16: Universal Border-Box</h3>
+                 <p class="task-description">
+                    A common practice is applying `box-sizing: border-box` to all elements. This makes layout math much more intuitive.
+                    Both columns below have `width: 50%` and padding. Without universal border-box, they wouldn't fit side-by-side.
+                 </p>
+                 <style>
+                    .universal-demo *, .universal-demo *::before, .universal-demo *::after {
+                        box-sizing: border-box;
+                    }
+                 </style>
+                 <div class="universal-demo bg-slate-200 rounded p-1 overflow-hidden">
+                     <div class="float-left w-1/2 p-4">
+                         <div class="bg-indigo-500 h-24 box">Column 1</div>
+                     </div>
+                     <div class="float-left w-1/2 p-4">
+                         <div class="bg-purple-500 h-24 box">Column 2</div>
+                     </div>
+                 </div>
+            </div>
+        </section>
+        
+        <!-- Section: Box Shadow -->
+        <section id="box-shadow" class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-700 mb-4">🔹 Box Shadow</h2>
+
+            <!-- Task 17 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 17: Simple Shadow</h3>
+                <p class="task-description">A simple card shadow using `box-shadow: 2px 2px 5px #888888`.</p>
+                <div class="box bg-white text-slate-800 h-24 w-1/2 mx-auto" style="box-shadow: 2px 2px 5px #888888;">Simple Shadow</div>
+            </div>
+
+            <!-- Task 18 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 18: 3D Raised Button Effect</h3>
+                <p class="task-description">Using `box-shadow` to simulate a raised button. Click it to see the active state.</p>
+                <style>
+                    .raised-button {
+                        background-color: #3b82f6; /* blue-500 */
+                        border-bottom: 4px solid #1d4ed8; /* blue-700 */
+                        transition: all 0.1s ease-in-out;
+                    }
+                    .raised-button:active {
+                        transform: translateY(2px);
+                        border-bottom-width: 2px;
+                    }
+                </style>
+                <div class="box raised-button h-20 w-48 mx-auto cursor-pointer">Click Me</div>
+            </div>
+
+            <!-- Task 19 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 19: Inner Shadow</h3>
+                <p class="task-description">The `inset` keyword creates a shadow inside the element, giving a "pressed-in" or depressed appearance.</p>
+                <div class="box bg-slate-200 text-slate-800 h-24 w-1/2 mx-auto" style="box-shadow: inset 2px 2px 5px rgba(0,0,0,0.4);">Inset Shadow</div>
+            </div>
+
+            <!-- Task 20 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 20: Glowing Effect with Multiple Shadows</h3>
+                <p class="task-description">Multiple shadows can be layered (comma-separated) to create complex effects like this blue glow.</p>
+                <div class="box bg-slate-800 h-24 w-1/2 mx-auto" style="
+                    box-shadow: 0 0 5px #fff,
+                                0 0 10px #fff,
+                                0 0 20px #3b82f6,
+                                0 0 30px #3b82f6,
+                                0 0 40px #3b82f6;
+                ">Glowing Box</div>
+            </div>
+        </section>
+        
+        <!-- Section: Backgrounds -->
+        <section id="backgrounds" class="mt-12">
+            <h2 class="text-2xl font-bold text-slate-700 mb-4">🔹 Backgrounds</h2>
+
+            <!-- Task 21 is demonstrated on the Header, Main, and new Footer elements -->
+            <div class="task-container">
+                <h3 class="task-title">Task 21: Background Colors</h3>
+                <p class="task-description">Different background colors have been applied to the page's `header` (light blue), `main` content area (white), and `footer` (dark gray) sections.</p>
+            </div>
+
+            <!-- Task 22 -->
+            <div class="task-container" style="background-image: url('https://placehold.co/600x200/a78bfa/a78bfa'); background-size: cover;">
+                <h3 class="task-title" style="color:white; border-color: white;">Task 22: RGBA Transparency</h3>
+                <p class="task-description" style="color:white;">This box has a semi-transparent black background (`rgba(0, 0, 0, 0.5)`) laid over an image, allowing the image to be partially visible.</p>
+                <div class="box h-24 text-white" style="background-color: rgba(0, 0, 0, 0.5);">Transparent BG</div>
+            </div>
+
+            <!-- Task 23 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 23: Background Image</h3>
+                <p class="task-description">This `div` has a background image applied using `background-image: url(...)`.</p>
+                <div class="h-48 rounded" style="background-image: url('https://placehold.co/600x200/7dd3fc/1e293b?text=Background+Image');"></div>
+            </div>
+            
+            <!-- Task 24 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 24: Hero Section</h3>
+                <p class="task-description">A hero section with a scenic photo as a background and text overlayed on top.</p>
+                <div class="hero-section">
+                    <h1 class="text-4xl font-bold">Welcome to our Website</h1>
+                    <p class="mt-2 text-lg">Discover amazing things here.</p>
+                </div>
+            </div>
+            
+            <!-- Task 25 & 26 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 25 & 26: Background Position</h3>
+                <p class="task-description">Controlling the position of a `no-repeat` background image.</p>
+                <div class="flex flex-wrap -mx-2">
+                    <div class="w-full md:w-1/2 px-2 mb-4">
+                        <p class="font-semibold text-slate-600 mb-2">`top right`</p>
+                        <div class="h-48 rounded border p-4 flex items-end" style="background-image: url('https://placehold.co/150x150/fb923c/ffffff?text=Icon'); background-repeat: no-repeat; background-position: top right;">
+                            <span class="text-slate-700 font-medium">Content is at bottom-left</span>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 px-2">
+                        <p class="font-semibold text-slate-600 mb-2">`center`</p>
+                        <div class="h-48 rounded border flex justify-center items-center" style="background-image: url('https://placehold.co/150x150/34d399/ffffff?text=Icon'); background-repeat: no-repeat; background-position: center;">
+                            <span class="bg-white/70 px-4 py-2 rounded text-slate-800 font-medium">Image is centered</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 27 & 28 -->
+             <div class="task-container">
+                <h3 class="task-title">Task 27 & 28: Background Repeat</h3>
+                <p class="task-description">Controlling the repetition of a background image.</p>
+                 <div class="flex flex-wrap -mx-2">
+                    <div class="w-full md:w-1/2 px-2 mb-4">
+                        <p class="font-semibold text-slate-600 mb-2">`repeat` (Tiled)</p>
+                        <div class="h-48 rounded border" style="background-image: url('https://placehold.co/50x50/c084fc/ffffff?text=Tile'); background-repeat: repeat;"></div>
+                    </div>
+                    <div class="w-full md:w-1/2 px-2">
+                        <p class="font-semibold text-slate-600 mb-2">`no-repeat` (Bottom Right)</p>
+                        <div class="h-48 rounded border" style="background-image: url('https://placehold.co/100x100/f87171/ffffff?text=Logo'); background-repeat: no-repeat; background-position: bottom right;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 29 & 30 -->
+            <div class="task-container">
+                <h3 class="task-title">Task 29 & 30: Background Size</h3>
+                <p class="task-description">Controlling how a background image is scaled.</p>
+                <div class="flex flex-wrap -mx-2">
+                    <div class="w-full md:w-1/2 px-2 mb-4">
+                        <p class="font-semibold text-slate-600 mb-2">`background-size: cover`</p>
+                        <div class="h-48 rounded text-white flex justify-center items-center font-bold text-2xl" style="background-image: url('https://placehold.co/400x400/60a5fa/ffffff?text=Wide+Image'); background-size: cover; background-position: center;">
+                           Covers the area
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 px-2">
+                        <p class="font-semibold text-slate-600 mb-2">`background-size: contain`</p>
+                        <div class="h-48 rounded border" style="background-image: url('https://placehold.co/400x400/60a5fa/ffffff?text=Wide+Image'); background-size: contain; background-position: center; background-repeat: no-repeat;">
+                        </div>
+                    </div>
+                </div>
+                 <p class="mt-4 text-sm text-slate-600">`cover` scales the image to fill the entire container, cropping if necessary. `contain` scales the image to fit entirely inside the container without cropping, which may leave empty space.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center mt-10 p-6 rounded-lg text-white" style="background-color: #1e293b;">
+        <p>&copy; 2025 CSS Interactive Guide. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
