@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position, Float & Z-Index Examples</title>
+    <style>
+        /* --- General Styles --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .example-section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        code {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .box {
+            padding: 20px;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* --- Position: Fixed --- */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            /* High z-index to stay on top of everything */
+            z-index: 1000; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .content {
+            /* Prevent content from being hidden by fixed header */
+            padding-top: 60px; 
+        }
+        
+        /* --- Z-Index Section --- */
+        .z-index-container {
+            position: relative;
+            height: 180px;
+            background: #e9ecef;
+            border: 1px solid #ced4da;
+            margin-top: 10px;
+        }
+        .z-box {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .z-box-1 {
+            background-color: #dc3545;
+            top: 20px;
+            left: 20px;
+            z-index: 1;
+        }
+        .z-box-2 {
+            background-color: #ffc107;
+            top: 50px;
+            left: 80px;
+            z-index: 2; /* Higher z-index, so it appears on top of z-box-1 */
+        }
+        .image-overlay-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            margin: auto;
+        }
+        .image-overlay-container img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+        }
+        .image-overlay-container .text-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            z-index: 5;
+        }
+        .image-overlay-container .overlay-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10; /* Highest z-index to be on top of text and image */
+        }
+        .stack-box {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border: 2px solid white;
+        }
+        .stack-red {
+            background: #dc3545;
+            top: 20px; left: 20px;
+            z-index: 1;
+        }
+        .stack-blue {
+            background: #007bff;
+            top: 40px; left: 40px;
+            z-index: 2;
+        }
+        .stack-green {
+            background: #28a745;
+            top: 60px; left: 60px;
+            z-index: 3;
+        }
+        
+        /* Modal Popup */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: none; /* Hidden by default */
+            place-items: center;
+        }
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+        /* Show the modal when it's the target of the URL */
+        .modal-overlay:target {
+            display: grid;
+        }
+        .open-modal-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .close-modal-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 15px;
+            background-color: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- FIXED HEADER -->
+    <header class="fixed-header">
+        Fixed Header (Stays at the top on scroll)
+    </header>
+
+    <div class="content main-container">
+        <h1>CSS Layout Showcase: Position, Float & Z-Index</h1>
+
+        <!-- Z-INDEX SECTION -->
+        <section id="z-index" class="example-section">
+            <h2><code>z-index</code></h2>
+            <p>The <code>z-index</code> property specifies the stack order of a positioned element. An element with a greater stack order is always in front of an element with a lower stack order. <strong>Note: <code>z-index</code> only works on positioned elements (<code>position: relative</code>, <code>absolute</code>, <code>fixed</code>, or <code>sticky</code>).</strong></p>
+        
+            <h3>1. Two Overlapping Boxes</h3>
+            <p>The yellow box has <code>z-index: 2</code> and the red box has <code>z-index: 1</code>, so the yellow box appears on top.</p>
+            <div class="z-index-container">
+                <div class="z-box z-box-1">z-index: 1</div>
+                <div class="z-box z-box-2">z-index: 2</div>
+            </div>
+
+            <h3>2. Sticky Header Above All Content</h3>
+            <p>Our main site header is a prime example. It has <code>position: fixed</code> and a very high <code>z-index: 1000</code>. This ensures it stays visually on top of all other content on the page, including the sticky navigation bar which has a lower <code>z-index</code>.</p>
+
+            <h3>3. Image with Overlayed Text and Button</h3>
+            <p>The button (<code>z-index: 10</code>) is on top of the text overlay (<code>z-index: 5</code>), which is on top of the image.</p>
+            <div class="image-overlay-container">
+                <img src="https://placehold.co/300x200/6c757d/white?text=Background" alt="Placeholder">
+                <div class="text-overlay">This is some descriptive text.</div>
+                <button class="overlay-button">Click Me</button>
+            </div>
+            
+            <h3>4. Stacking Three Boxes</h3>
+            <p>Three boxes are stacked. Green (<code>z-index: 3</code>) is on top, then Blue (<code>z-index: 2</code>), then Red (<code>z-index: 1</code>).</p>
+            <div class="z-index-container">
+                <div class="stack-box stack-red"></div>
+                <div class="stack-box stack-blue"></div>
+                <div class="stack-box stack-green"></div>
+            </div>
+
+            <h3>5. Modal Popup Simulation</h3>
+            <p>Click the button to simulate a modal popup. The overlay (<code>z-index: 2000</code>) appears on top of all page content. This is achieved using <code>position: fixed</code> and the <code>:target</code> pseudo-class for a CSS-only interaction.</p>
+            <a href="#my-modal" class="open-modal-btn">Open Modal</a>
+        </section>
+
+        <!-- PREVIOUS SECTIONS for context -->
+        <section id="static" class="example-section">
+             <h2><code>position: static;</code> (Default)</h2>
+             <p>Elements in the normal document flow.</p>
+        </section>
+        <section id="relative" class="example-section">
+             <h2><code>position: relative;</code></h2>
+             <p>Positioned relative to its normal position.</p>
+        </section>
+        <section id="absolute" class="example-section">
+             <h2><code>position: absolute;</code></h2>
+             <p>Positioned relative to the nearest positioned ancestor.</p>
+        </section>
+        <section id="sticky" class="example-section">
+             <h2><code>position: sticky;</code></h2>
+             <p>Toggles between relative and fixed based on scroll position.</p>
+        </section>
+        <section id="float" class="example-section">
+             <h2><code>float: left | right;</code></h2>
+             <p>Takes an element out of the normal flow and places it to the side of its container.</p>
+        </section>
+
+    </div>
+
+    <!-- MODAL HTML -->
+    <div id="my-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3>Modal Title</h3>
+            <p>This is a modal window that appears on top of the main content thanks to its high z-index.</p>
+            <a href="#" class="close-modal-btn">Close</a>
+        </div>
+    </div>
+
+</body>
+</html>

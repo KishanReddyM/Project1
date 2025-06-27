@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position & Float Examples</title>
+    <style>
+        /* --- General Styles --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            background-color: #f9f9f9;
+        }
+
+        .main-container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        .example-section {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        h1, h2, h3 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        code {
+            background-color: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .box {
+            padding: 20px;
+            color: white;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .clearfix::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* --- Position: Static --- */
+        .static-box {
+            background-color: #6c757d;
+            border: 3px dashed #495057;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        /* --- Position: Relative --- */
+        .relative-parent {
+            background: #e9ecef;
+            padding: 20px;
+            height: 150px;
+            border: 2px solid #ced4da;
+        }
+        .relative-box {
+            position: relative;
+            top: 20px;
+            left: 30px;
+            background-color: #17a2b8;
+            width: 150px;
+        }
+        .relative-offset-1 {
+            position: relative;
+            background-color: #fd7e14;
+            top: 10px;
+            left: 20px;
+            z-index: 1; /* z-index works on positioned elements */
+        }
+        .relative-offset-2 {
+            position: relative;
+            background-color: #20c997;
+            bottom: 10px; /* same as top: -10px */
+            right: 20px; /* same as left: -20px */
+        }
+        .input-container {
+            position: relative;
+            margin-top: 30px;
+        }
+        .input-container label {
+            position: relative;
+            top: -22px;
+            left: 10px;
+            background-color: white;
+            padding: 0 5px;
+            font-size: 0.9em;
+            color: #495057;
+        }
+        .input-container input {
+            padding: 10px;
+            width: 200px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+
+        /* --- Position: Absolute --- */
+        .absolute-parent {
+            position: relative; /* This is the containing block */
+            height: 200px;
+            background-color: #e9ecef;
+            border: 2px dashed #ced4da;
+            padding: 10px;
+        }
+        .absolute-child {
+            position: absolute;
+            top: 40px;
+            left: 50px;
+            width: 200px;
+            background-color: #dc3545;
+        }
+        .popup {
+            position: relative;
+            width: 80%;
+            height: 150px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            line-height: 25px;
+            text-align: center;
+        }
+        .image-overlap-container {
+            position: relative;
+            height: 250px;
+            width: 350px;
+            margin: auto;
+        }
+        .image-overlap-container img {
+            width: 250px;
+            height: 200px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .img-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .img-front {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 2;
+            border: 4px solid white;
+        }
+        .tooltip-container {
+            position: relative;
+            display: inline-block; /* To make the container wrap the text */
+            cursor: pointer;
+        }
+        .tooltip-text {
+            visibility: hidden;
+            width: 160px;
+            background-color: #343a40;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 3;
+            bottom: 125%; /* Position above the text */
+            left: 50%;
+            margin-left: -80px; /* Center the tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* --- Position: Fixed --- */
+        .fixed-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        .fixed-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #343a40;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            z-index: 1000;
+        }
+        .social-icons {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .social-icons li {
+            display: inline-block;
+            margin: 0 15px;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 60px; /* Above the footer */
+            right: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            z-index: 1001;
+            text-decoration: none;
+        }
+        .content {
+            padding-top: 60px; /* Prevent content from being hidden by fixed header */
+            padding-bottom: 60px; /* Prevent content from being hidden by fixed footer */
+        }
+        
+
+        /* --- Position: Sticky --- */
+        .sticky-nav {
+            position: sticky;
+            top: 55px; /* Stick below the fixed header */
+            background-color: #ffc107;
+            padding: 15px;
+            z-index: 999;
+            text-align: center;
+            border-bottom: 2px solid #e0a800;
+        }
+        .sticky-wrapper {
+            display: flex;
+            align-items: flex-start;
+        }
+        .long-paragraph {
+            flex-grow: 1;
+        }
+        .sticky-side-note {
+            position: sticky;
+            top: 130px; /* Stick below the sticky nav */
+            width: 200px;
+            margin-left: 20px;
+            padding: 15px;
+            background-color: #e2e3e5;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            flex-shrink: 0; /* Prevent the note from shrinking */
+        }
+        .scroll-container {
+            height: 250px;
+            overflow-y: scroll;
+            border: 2px solid #ced4da;
+            margin-top: 20px;
+        }
+        .scroll-container h3 {
+            position: sticky;
+            top: 0;
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            margin: 0;
+            z-index: 10;
+        }
+        .scroll-content {
+            padding: 15px;
+        }
+        
+        /* --- Float --- */
+        .float-img {
+            float: left;
+            width: 150px;
+            height: 150px;
+            margin: 0 20px 10px 0;
+            border-radius: 8px;
+        }
+        .float-box-container {
+            background: #e9ecef;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .float-left {
+            float: left;
+            width: 30%;
+            background-color: #fd7e14;
+        }
+        .float-right {
+            float: right;
+            width: 30%;
+            background-color: #20c997;
+        }
+        .float-nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 10px;
+            background-color: #6c757d;
+            border-radius: 5px;
+            overflow: hidden; /* Another way to contain floats */
+        }
+        .float-nav li {
+            float: left;
+        }
+        .float-nav a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 10px 16px;
+            text-decoration: none;
+        }
+        .float-nav a:hover {
+            background-color: #5a6268;
+        }
+        .col-sidebar {
+            float: left;
+            width: 28%;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        .col-main {
+            float: right;
+            width: 68%;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        .clear-element {
+            clear: both;
+            border-top: 2px solid #dc3545;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- FIXED HEADER -->
+    <header class="fixed-header">
+        Fixed Header (Stays at the top on scroll)
+    </header>
+
+    <div class="content main-container">
+        <h1>CSS Layout Showcase</h1>
+
+        <!-- STATIC SECTION -->
+        <section id="static" class="example-section">
+            <h2><code>position: static;</code> (Default)</h2>
+            <p>Static is the default position for all HTML elements. They are positioned according to the normal flow of the page.</p>
+            <div class="box static-box">Static Element 1</div>
+            <div class="box static-box">Static Element 2</div>
+            <div class="box static-box">Static Element 3</div>
+        </section>
+
+        <!-- RELATIVE SECTION -->
+        <section id="relative" class="example-section">
+            <h2><code>position: relative;</code></h2>
+            <p>An element with <code>position: relative;</code> is positioned relative to its normal position.</p>
+            <h3>1. Box with Relative Offset</h3>
+            <div class="relative-parent">
+                <div class="box relative-box">Relative (top: 20px, left: 30px)</div>
+            </div>
+        </section>
+
+        <!-- ABSOLUTE SECTION -->
+        <section id="absolute" class="example-section">
+            <h2><code>position: absolute;</code></h2>
+            <p>An element with <code>position: absolute;</code> is positioned relative to its nearest positioned ancestor.</p>
+            <h3>1. Child positioned inside a Relative Parent</h3>
+            <div class="absolute-parent">
+                This is the relative parent.
+                <div class="box absolute-child">Absolute Child</div>
+            </div>
+        </section>
+        
+        <!-- STICKY SECTION -->
+        <section id="sticky" class="example-section">
+            <h2><code>position: sticky;</code></h2>
+            <p>A sticky element toggles between <code>relative</code> and <code>fixed</code>, depending on the scroll position.</p>
+            <nav class="sticky-nav">
+                This is a Sticky Navigation Bar
+            </nav>
+            <h3>Sticky Heading in a Scrollable Container</h3>
+            <div class="scroll-container">
+                <h3>Sticky Section Title</h3>
+                <div class="scroll-content">
+                    <p>Scroll me to see the heading stick.</p>
+                    <p>Item 1</p><p>Item 2</p><p>Item 3</p><p>Item 4</p><p>Item 5</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FLOAT SECTION -->
+        <section id="float" class="example-section">
+            <h2><code>float: left | right;</code></h2>
+            <p>The <code>float</code> property places an element on the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the page.</p>
+            
+            <h3>1. Float Image to the Left of Text</h3>
+            <div class="clearfix">
+                <img src="https://placehold.co/150x150/007bff/white?text=Float" alt="Floated Image" class="float-img">
+                <p>This paragraph text wraps around the floated image. The float property is incredibly useful for this kind of layout, which is common in articles and blogs. The image is taken out of the normal document flow, and the rest of the content flows around it. We've added a `clearfix` to the parent container to ensure it properly contains the floated image.</p>
+            </div>
+
+            <h3>2. Float Two Boxes Left and Right</h3>
+            <div class="float-box-container clearfix">
+                <div class="box float-left">Left Box</div>
+                <div class="box float-right">Right Box</div>
+                <p style="padding: 0 10px;">This content sits in the center, between the two floated boxes.</p>
+            </div>
+            
+            <h3>3. Horizontal Navigation with Floated List Items</h3>
+            <nav class="float-nav">
+                <ul>
+                    <li><a href="#/">Home</a></li>
+                    <li><a href="#/">About</a></li>
+                    <li><a href="#/">Services</a></li>
+                    <li><a href="#/">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <h3>4. Basic Two-Column Layout</h3>
+            <div class="two-col-container clearfix">
+                <aside class="col-sidebar">
+                    <h4>Left Sidebar</h4>
+                    <p>This sidebar is a div with <code>float: left;</code>.</p>
+                </aside>
+                <main class="col-main">
+                    <h4>Main Content</h4>
+                    <p>This main content area is a div with <code>float: right;</code>. Using float this way was a very common technique for creating multi-column layouts before CSS Flexbox and Grid became widely supported.</p>
+                </main>
+            </div>
+            
+            <h3>5. Using <code>clear: both</code> to Fix Layout</h3>
+            <p>The two-column layout above uses a "clearfix" on its container. Below is an element with <code>clear: both;</code> which ensures it appears *below* all floated elements that precede it, fixing the common "collapsing parent" issue.</p>
+            <div class="clear-element">
+                This element has <code>clear: both;</code>, so it is not affected by the floats above.
+            </div>
+        </section>
+
+    </div>
+
+    <!-- FIXED FOOTER and SCROLL-TO-TOP BUTTON -->
+    <a href="#" class="scroll-to-top" title="Scroll to Top">&#8679;</a>
+    <footer class="fixed-footer">
+        <ul class="social-icons">
+            <li>Facebook</li>
+            <li>Twitter</li>
+            <li>Instagram</li>
+        </ul>
+    </footer>

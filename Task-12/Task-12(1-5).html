@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Combined CSS Display Examples</title>
+<style>
+  /* General Styling */
+  body {
+    font-family: sans-serif;
+    padding: 20px;
+    line-height: 1.6;
+  }
+  .container {
+    border: 2px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 25px;
+  }
+  h3 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+    color: #333;
+  }
+
+  /* 1: span with display: block */
+  .block-span {
+    display: block;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+  }
+
+  /* 2: div behave like a button using display: inline */
+  .inline-div {
+    display: inline;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* 3: two divs with display: inline-block */
+  .inline-block-div {
+    display: inline-block;
+    width: 150px;
+    height: 100px;
+    background-color: #28a745;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+    /* Vertically centering text */
+    line-height: 100px;
+  }
+
+  /* 4: display: none to hide and show on hover */
+  .hover-container {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+  }
+  .hidden-element {
+    display: none;
+    background-color: #ffc107;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px dashed #333;
+  }
+  .hover-container:hover .hidden-element {
+    display: block;
+  }
+
+  /* 5: Style an <a> tag to behave like a block element */
+  .block-link {
+    display: block;
+    width: 250px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    margin: 10px auto; /* auto margin centers the block */
+    text-align: center;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  .block-link:hover {
+      background-color: #c82333;
+  }
+</style>
+</head>
+<body>
+
+  <h1>All-in-One CSS Display Examples</h1>
+
+  <div class="container">
+    <h3>1. `<span>` with `display: block`</h3>
+    <p>This is a paragraph with a <span class="block-span">span that now behaves like a block element</span> inside.</p>
+  </div>
+
+  <div class="container">
+    <h3>2. `<div>` with `display: inline` (Button-like)</h3>
+    <p>Here is some text, and here is a <div class="inline-div">Clickable Div</div> that sits within the line.</p>
+  </div>
+
+  <div class="container">
+    <h3>3. `<div>`s with `display: inline-block`</h3>
+    <p>These two divs sit side-by-side.</p>
+    <div class="inline-block-div">Div 1</div>
+    <div class="inline-block-div">Div 2</div>
+  </div>
+
+  <div class="container">
+    <h3>4. Show Element on Hover</h3>
+    <div class="hover-container">
+      <p>Hover over this entire area!</p>
+      <div class="hidden-element">
+        <p>Tada! The hidden element is now visible.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h3>5. `<a>` Tag Styled as a Block Element</h3>
+    <p>These links are now block-level elements.</p>
+    <a href="#/" class="block-link">I am a block-level link</a>
+    <a href="#/" class="block-link">So am I</a>
+  </div>
+
+</body>
+</html>
