@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Gourmet Place</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <header class="left-panel">
+            <div class="logo">
+                <img src="https://i.imgur.com/gRk2c6j.png" alt="Restaurant Logo">
+                <h1>The Gourmet Place</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                    <li><a href="#feedback">Feedback</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main class="right-panel">
+            <section id="menu">
+                <h2>Our Menu</h2>
+                <div class="menu-category">
+                    <h3>Appetizers</h3>
+                    <ul>
+                        <li><strong>Bruschetta</strong> - Toasted bread with tomatoes, garlic, and basil - $8</li>
+                        <li><strong>Stuffed Mushrooms</strong> - Mushroom caps filled with herbs and cheese - $10</li>
+                        <li><strong>Garlic Bread</strong> - Toasted baguette with garlic butter - $6</li>
+                    </ul>
+                </div>
+                <div class="menu-category">
+                    <h3>Main Courses</h3>
+                    <ul>
+                        <li><strong>Grilled Salmon</strong> - Served with asparagus and lemon butter sauce - $22</li>
+                        <li><strong>Filet Mignon</strong> - 8oz steak with mashed potatoes and red wine reduction - $35</li>
+                        <li><strong>Chicken Alfredo</strong> - Creamy pasta with grilled chicken - $18</li>
+                    </ul>
+                </div>
+                 <div class="menu-category">
+                    <h3>Desserts</h3>
+                    <ul>
+                        <li><strong>Chocolate Lava Cake</strong> - Warm chocolate cake with a molten center - $9</li>
+                        <li><strong>New York Cheesecake</strong> - Classic cheesecake with a graham cracker crust - $8</li>
+                        <li><strong>Tiramisu</strong> - Coffee-flavored Italian dessert - $9</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="gallery">
+                <h2>Gallery</h2>
+                <div class="gallery-grid">
+                    <img src="https://i.imgur.com/4J2aGzC.jpg" alt="Food Image 1">
+                    <img src="https://i.imgur.com/OANVn4T.jpg" alt="Food Image 2">
+                    <img src="https://i.imgur.com/VOVMk5T.jpg" alt="Food Image 3">
+                    <img src="https://i.imgur.com/s4k2bVl.jpg" alt="Food Image 4">
+                </div>
+            </section>
+
+            <section id="feedback">
+                <h2>Feedback</h2>
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact:</label>
+                        <input type="text" id="contact" name="contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating:</label>
+                        <select id="rating" name="rating">
+                            <option value="5">5 - Excellent</option>
+                            <option value="4">4 - Very Good</option>
+                            <option value="3">3 - Good</option>
+                            <option value="2">2 - Fair</option>
+                            <option value="1">1 - Poor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="suggestions">Suggestions:</label>
+                        <textarea id="suggestions" name="suggestions" rows="4"></textarea>
+                    </div>
+                    <button type="submit">Submit Feedback</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 The Gourmet Place. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+style.css
+CSS
+
+/* Basic Reset and Font */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    background-image: url('https://i.imgur.com/R3d62n4.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: #333;
+}
+
+.container {
+    width: 80%;
+    margin: 40px auto;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Left Panel - Header and Nav */
+.left-panel {
+    float: left;
+    width: 25%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.logo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.logo h1 {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+nav ul li a:hover {
+    color: #c0392b;
+}
+
+
+/* Right Panel - Content */
+.right-panel {
+    float: right;
+    width: 75%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #c0392b;
+    border-bottom: 2px solid #c0392b;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Menu Section */
+.menu-category h3 {
+    color: #333;
+    margin-top: 20px;
+}
+
+.menu-category ul {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-category ul li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Gallery Section */
+.gallery-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: calc(50% - 15px);
+    height: auto;
+    border-radius: 5px;
+}
+
+/* Feedback Form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #c0392b;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+button[type="submit"]:hover {
+    background-color: #a93226;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
