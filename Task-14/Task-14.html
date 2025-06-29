@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Development Bootcamp Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #1a202c;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        fieldset {
+            border: 2px solid #cbd5e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            position: relative; /* For potential future tooltips */
+        }
+
+        legend {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #3b82f6;
+            padding: 0 10px;
+            background-color: #ffffff; /* To cover the border */
+            margin-left: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #4a5568;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 18px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+            font-size: 1rem;
+            color: #2d3748;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.25);
+        }
+
+        input[type="radio"] {
+            margin-right: 8px;
+            transform: scale(1.1); /* Slightly larger radio buttons */
+        }
+
+        /* Group for radio buttons */
+        .radio-group label {
+            display: inline-block;
+            margin-right: 20px;
+            font-weight: normal;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #3b82f6;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+
+        input[type="submit"]:active,
+        input[type="reset"]:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ more opacity for overlay */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%; /* Responsive width */
+            max-width: 550px;
+            position: relative; /* For positioning the close button */
+            text-align: center;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .close-button {
+            color: #aaa;
+            font-size: 32px;
+            font-weight: bold;
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+        }
+
+        .modal-content h2 {
+            color: #22c55e; /* Green for success */
+            margin-bottom: 15px;
+            font-size: 1.8rem;
+        }
+
+        .modal-content p {
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+            }
+            fieldset {
+                padding: 15px;
+            }
+            legend {
+                font-size: 1.15rem;
+            }
+            input[type="submit"],
+            input[type="reset"] {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+            .modal-content {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Register for Our Web Development Bootcamp</h1>
+
+        <form id="registrationForm" class="space-y-6">
+            <fieldset>
+                <legend>Personal Information</legend>
+
+                <label for="name">Name:</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    maxlength="50"
+                    pattern="[A-Za-z\s]+"
+                    title="Please enter only letters and spaces."
+                    placeholder="John Doe"
+                    aria-describedby="name-error"
+                >
+                <!-- <div id="name-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid name.</div> -->
+
+                <label for="email">Email:</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="john.doe@example.com"
+                    aria-describedby="email-error"
+                >
+                <!-- <div id="email-error" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email address.</div> -->
+
+                <label for="phone">Phone:</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    required
+                    pattern="[0-9]{10}"
+                    title="Please enter a 10-digit phone number (e.g., 1234567890)."
+                    placeholder="1234567890"
+                    aria-describedby="phone-error"
+                >
+                <!-- <div id="phone-error" class="text-red-500 text-sm mt-1 hidden">Please enter a 10-digit phone number.</div> -->
+            </fieldset>
+
+            <fieldset>
+                <legend>Course Selection</legend>
+                <label for="course">Choose Your Course:</label>
+                <select id="course" name="course" required>
+                    <option value="">--Please choose an option--</option>
+                    <option value="frontend">Frontend Development</option>
+                    <option value="backend">Backend Development</option>
+                    <option value="fullstack">Fullstack Development</option>
+                    <option value="devops">DevOps Essentials</option>
+                    <option value="mobile">Mobile App Development</option>
+                </select>
+
+                <p class="mb-3 mt-4">Mode of Learning:</p>
+                <div class="radio-group flex gap-x-8">
+                    <div class="flex items-center">
+                        <input type="radio" id="online" name="mode" value="online" required class="mr-2">
+                        <label for="online" class="mb-0">Online</label>
+                    </div>
+                    <div class="flex items-center">
+                        <input type="radio" id="offline" name="mode" value="offline" class="mr-2">
+                        <label for="offline" class="mb-0">Offline</label>
+                    </div>
+                </div>
+
+                <label for="comments" class="mt-6">Additional Comments:</label>
+                <textarea
+                    id="comments"
+                    name="comments"
+                    rows="4"
+                    maxlength="200"
+                    placeholder="Any specific questions or requests?"
+                    class="resize-y"
+                ></textarea>
+            </fieldset>
+
+            <div class="button-group">
+                <input type="reset" value="Reset">
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+
+    <!-- Thank You Modal -->
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>🎉 Thank You for Registering! 🎉</h2>
+            <p>Your registration has been successfully submitted for our Web Development Bootcamp.</p>
+            <p class="mt-2">We will contact you shortly with more details regarding your course and mode of learning.</p>
+        </div>
+    </div>
+
+    <script>
+        const registrationForm = document.getElementById('registrationForm');
+        const thankYouModal = document.getElementById('thankYouModal');
+        const closeButton = document.querySelector('.close-button');
+
+        // Function to show the modal
+        function showModal() {
+            thankYouModal.style.display = 'flex'; // Use flex to center content
+        }
+
+        // Function to hide the modal
+        function hideModal() {
+            thankYouModal.style.display = 'none';
+        }
+
+        // Handle form submission
+        registrationForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Check browser's built-in validation
+            if (registrationForm.checkValidity()) {
+                showModal(); // Show the modal if form is valid
+                registrationForm.reset(); // Reset the form fields
+            } else {
+                // If validation fails, the browser will typically show default validation messages.
+                // You could add custom error handling here if desired,
+                // e.g., highlighting invalid fields or displaying specific messages.
+            }
+        });
+
+        // Handle close button click
+        closeButton.addEventListener('click', hideModal);
+
+        // Hide modal if user clicks outside of the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target === thankYouModal) {
+                hideModal();
+            }
+        });
+    </script>
+</body>
+</html>
