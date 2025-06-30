@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Demo</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+            color: #334155; /* Darker text */
+        }
+        .section-title {
+            font-size: 1.5rem; /* text-2xl */
+            font-weight: 600; /* font-semibold */
+            margin-top: 2.5rem; /* mt-10 */
+            margin-bottom: 1rem; /* mb-4 */
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #cbd5e1; /* border-slate-300 */
+        }
+        .flex-item {
+            background-color: #6366f1; /* Indigo 500 */
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem; /* rounded-lg */
+            text-align: center;
+            font-weight: 500; /* font-medium */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+        }
+        .navbar-item {
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .navbar-item:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="p-8">
+
+    <h1 class="text-4xl font-bold text-center text-indigo-700 mb-8">Flexbox Playground</h1>
+
+    <!-- Basic Flexbox Setup (Tasks 1-5) -->
+    <h2 class="section-title">Basic Flexbox Setup (Tasks 1-5)</h2>
+
+    <!-- Task 1: Create a flex container with three <div> items inside and apply display: flex. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 1: Basic Flex Container</h3>
+        <p class="mb-2 text-sm text-slate-600">Container with <code>display: flex</code> (default <code>flex-direction: row</code>).</p>
+        <div class="flex bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item mr-2">Item 1</div>
+            <div class="flex-item mr-2">Item 2</div>
+            <div class="flex-item">Item 3</div>
+        </div>
+    </div>
+
+    <!-- Task 2 & 3: Set flex-direction: row (default) and flex-direction: column -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Tasks 2 & 3: Flex Direction</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>flex-direction: row</code> (default): Items side-by-side.</p>
+        <div class="flex flex-row bg-gray-100 p-4 rounded-md border border-gray-200 mb-4">
+            <div class="flex-item mr-2">Item A</div>
+            <div class="flex-item mr-2">Item B</div>
+            <div class="flex-item">Item C</div>
+        </div>
+        <p class="mb-2 text-sm text-slate-600"><code>flex-direction: column</code>: Items stacked vertically.</p>
+        <div class="flex flex-col bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item mb-2">Item X</div>
+            <div class="flex-item mb-2">Item Y</div>
+            <div class="flex-item">Item Z</div>
+        </div>
+    </div>
+
+    <!-- Task 4: Add gap: 20px; between flex items. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 4: Gap Between Items</h3>
+        <p class="mb-2 text-sm text-slate-600">Container with <code>gap: 20px</code> (<code>gap-5</code> in Tailwind).</p>
+        <div class="flex gap-5 bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+            <div class="flex-item">Item 3</div>
+        </div>
+    </div>
+
+    <!-- Task 5: Create a horizontal navbar using flex layout with logo and nav items side-by-side. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 5: Horizontal Navbar</h3>
+        <p class="mb-2 text-sm text-slate-600">Navbar with logo and navigation items side-by-side using Flexbox.</p>
+        <nav class="flex items-center justify-between bg-indigo-700 text-white p-4 rounded-md shadow-md">
+            <!-- Logo -->
+            <div class="font-bold text-xl mr-auto">MyLogo</div>
+            <!-- Navigation Items -->
+            <div class="flex space-x-4">
+                <a href="#" class="navbar-item">Home</a>
+                <a href="#" class="navbar-item">About</a>
+                <a href="#" class="navbar-item">Services</a>
+                <a href="#" class="navbar-item">Contact</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Justify Content (Tasks 6-10) -->
+    <h2 class="section-title">Justify Content (Tasks 6-10)</h2>
+
+    <!-- Task 6: Use justify-content: center to center all flex items horizontally. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 6: Justify Content - Center</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>justify-content: center</code>: Items centered horizontally.</p>
+        <div class="flex justify-center bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item mr-2">Item 1</div>
+            <div class="flex-item">Item 2</div>
+        </div>
+    </div>
+
+    <!-- Task 7: Apply justify-content: space-between to distribute items evenly with space between. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 7: Justify Content - Space Between</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>justify-content: space-between</code>: Items distributed with space between them.</p>
+        <div class="flex justify-between bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item">Item A</div>
+            <div class="flex-item">Item B</div>
+            <div class="flex-item">Item C</div>
+        </div>
+    </div>
+
+    <!-- Task 8: Use justify-content: space-around and observe how spacing works. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 8: Justify Content - Space Around</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>justify-content: space-around</code>: Items with equal space around them.</p>
+        <div class="flex justify-around bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item">Item X</div>
+            <div class="flex-item">Item Y</div>
+            <div class="flex-item">Item Z</div>
+        </div>
+    </div>
+
+    <!-- Task 9: Create a footer where items are pushed to the left and right using space-between. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 9: Footer Layout with Space Between</h3>
+        <p class="mb-2 text-sm text-slate-600">Footer with elements aligned to left and right using <code>space-between</code>.</p>
+        <footer class="flex justify-between items-center bg-gray-800 text-white p-4 rounded-md shadow-md">
+            <div class="text-sm">&copy; 2023 My Company</div>
+            <div class="flex space-x-4 text-sm">
+                <a href="#" class="text-gray-300 hover:text-white">Privacy Policy</a>
+                <a href="#" class="text-gray-300 hover:text-white">Terms of Service</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Task 10: Set justify-content: flex-end to align all items to the right. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 10: Justify Content - Flex End</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>justify-content: flex-end</code>: Items aligned to the right.</p>
+        <div class="flex justify-end bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item mr-2">Item 1</div>
+            <div class="flex-item">Item 2</div>
+        </div>
+    </div>
+
+    <!-- Align Items (Tasks 11-15) -->
+    <h2 class="section-title">Align Items (Tasks 11-15)</h2>
+
+    <!-- Task 11: Add height to the container and use align-items: center to center items vertically. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 11: Align Items - Center</h3>
+        <p class="mb-2 text-sm text-slate-600">Container with height and <code>align-items: center</code> for vertical centering.</p>
+        <div class="flex items-center h-40 bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item">Item 1</div>
+            <div class="flex-item">Item 2</div>
+        </div>
+    </div>
+
+    <!-- Task 12: Use align-items: flex-start and flex-end and see the effects. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 12: Align Items - Flex Start/End</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>align-items: flex-start</code>: Items aligned to the top.</p>
+        <div class="flex items-start h-40 bg-gray-100 p-4 rounded-md border border-gray-200 mb-4">
+            <div class="flex-item">Item A</div>
+            <div class="flex-item">Item B</div>
+        </div>
+        <p class="mb-2 text-sm text-slate-600"><code>align-items: flex-end</code>: Items aligned to the bottom.</p>
+        <div class="flex items-end h-40 bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item">Item X</div>
+            <div class="flex-item">Item Y</div>
+        </div>
+    </div>
+
+    <!-- Task 13: Create a two-column layout where one side is vertically centered and the other is not. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 13: Mixed Vertical Alignment</h3>
+        <p class="mb-2 text-sm text-slate-600">Two-column layout with different vertical alignments using <code>align-self</code> on items.</p>
+        <div class="flex h-60 bg-gray-100 p-4 rounded-md border border-gray-200">
+            <!-- Left Column: Top aligned content -->
+            <div class="flex flex-col flex-1 p-4 border border-gray-300 rounded-md mr-2">
+                <h4 class="text-lg font-medium mb-2">Column 1 (Top Aligned)</h4>
+                <p class="text-sm text-slate-700">This content is naturally top-aligned within its flex item.</p>
+            </div>
+            <!-- Right Column: Vertically centered content -->
+            <div class="flex flex-col flex-1 items-center justify-center p-4 border border-gray-300 rounded-md">
+                <h4 class="text-lg font-medium mb-2">Column 2 (Vertically Centered)</h4>
+                <p class="text-sm text-slate-700 text-center">This content is centered both horizontally and vertically within its flex item.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 14: Use align-items: stretch and remove height from children to see the stretch effect. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 14: Align Items - Stretch</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>align-items: stretch</code>: Items stretch to fill container height (default if no item height).
+            Note: <code>flex-item</code> has padding which gives it intrinsic height, so it won't stretch to fill the container entirely unless padding is removed or overridden.</p>
+        <div class="flex items-stretch h-40 bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item m-0">Item 1 (Stretches)</div>
+            <div class="flex-item m-0">Item 2 (Stretches)</div>
+            <div class="flex-item m-0">Item 3 (Stretches)</div>
+        </div>
+    </div>
+
+    <!-- Task 15: Create a card layout where content is top-aligned in one card and bottom-aligned in another. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 15: Card Layout with Mixed Item Alignment</h3>
+        <p class="mb-2 text-sm text-slate-600">Card layout demonstrating <code>align-items: flex-start</code> and <code>align-items: flex-end</code> for different cards.</p>
+        <div class="flex flex-wrap gap-4">
+            <!-- Card 1: Top Aligned Content -->
+            <div class="flex flex-col items-start w-64 min-h-[150px] bg-white border border-gray-200 rounded-lg shadow-md p-4">
+                <h4 class="text-lg font-medium mb-2">Card Title 1</h4>
+                <p class="text-sm text-slate-700">This card's content is aligned to the top. This is useful for consistent baselines.</p>
+            </div>
+            <!-- Card 2: Bottom Aligned Content -->
+            <div class="flex flex-col items-end w-64 min-h-[150px] bg-white border border-gray-200 rounded-lg shadow-md p-4">
+                <h4 class="text-lg font-medium mb-2">Card Title 2</h4>
+                <p class="text-sm text-slate-700 text-right">This card's content is aligned to the bottom. Could be used for action buttons.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flex-Wrap & Direction (Tasks 16-18) -->
+    <h2 class="section-title">Flex-Wrap & Direction (Tasks 16-18)</h2>
+
+    <!-- Task 16: Create a flex container with 10 items and set flex-wrap: wrap so they wrap on small screens. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 16: Flex Wrap - Wrap</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>flex-wrap: wrap</code>: Items wrap to the next line when space is insufficient.</p>
+        <div class="flex flex-wrap gap-4 bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item w-24">Item 1</div>
+            <div class="flex-item w-24">Item 2</div>
+            <div class="flex-item w-24">Item 3</div>
+            <div class="flex-item w-24">Item 4</div>
+            <div class="flex-item w-24">Item 5</div>
+            <div class="flex-item w-24">Item 6</div>
+            <div class="flex-item w-24">Item 7</div>
+            <div class="flex-item w-24">Item 8</div>
+            <div class="flex-item w-24">Item 9</div>
+            <div class="flex-item w-24">Item 10</div>
+        </div>
+    </div>
+
+    <!-- Task 17: Use flex-wrap: nowrap and observe how items overflow. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 17: Flex Wrap - No Wrap</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>flex-wrap: nowrap</code>: Items will overflow if there's not enough space (default).</p>
+        <div class="flex flex-nowrap overflow-x-auto bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item min-w-[100px] mr-2">Item A</div>
+            <div class="flex-item min-w-[100px] mr-2">Item B</div>
+            <div class="flex-item min-w-[100px] mr-2">Item C</div>
+            <div class="flex-item min-w-[100px] mr-2">Item D</div>
+            <div class="flex-item min-w-[100px] mr-2">Item E</div>
+            <div class="flex-item min-w-[100px] mr-2">Item F</div>
+            <div class="flex-item min-w-[100px] mr-2">Item G</div>
+            <div class="flex-item min-w-[100px] mr-2">Item H</div>
+            <div class="flex-item min-w-[100px] mr-2">Item I</div>
+            <div class="flex-item min-w-[100px]">Item J</div>
+        </div>
+        <p class="mt-2 text-xs text-slate-500">Scroll horizontally to see all items if they overflow.</p>
+    </div>
+
+    <!-- Task 18: Combine flex-direction: column-reverse with wrapping. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 18: Column Reverse with Wrap</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>flex-direction: column-reverse</code> and <code>flex-wrap: wrap</code>. Items stack from bottom-up, wrapping to new columns from right-to-left (if container allows).</p>
+        <div class="flex flex-col-reverse flex-wrap h-60 gap-2 bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item w-24">Item 1</div>
+            <div class="flex-item w-24">Item 2</div>
+            <div class="flex-item w-24">Item 3</div>
+            <div class="flex-item w-24">Item 4</div>
+            <div class="flex-item w-24">Item 5</div>
+            <div class="flex-item w-24">Item 6</div>
+        </div>
+    </div>
+
+    <!-- Flex Item Control (Tasks 19-24) -->
+    <h2 class="section-title">Flex Item Control (Tasks 19-24)</h2>
+
+    <!-- Task 19: Use order to rearrange 3 flex items (e.g., 2nd becomes 1st). -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 19: Item Order</h3>
+        <p class="mb-2 text-sm text-slate-600">Using <code>order</code> property to change visual order of items.</p>
+        <div class="flex bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item order-3 mr-2">First Item (Order 3)</div>
+            <div class="flex-item order-1 mr-2">Second Item (Order 1)</div>
+            <div class="flex-item order-2">Third Item (Order 2)</div>
+        </div>
+    </div>
+
+    <!-- Task 20: Apply flex-grow: 1 to one item so it expands and fills extra space. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 20: Flex Grow</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>flex-grow: 1</code> (<code>flex-grow</code> in Tailwind) on the middle item to make it expand.</p>
+        <div class="flex bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item mr-2">Item 1</div>
+            <div class="flex-item flex-grow mr-2">Item 2 (Grows)</div>
+            <div class="flex-item">Item 3</div>
+        </div>
+    </div>
+
+    <!-- Task 21: Create a 3-column layout where the middle item is twice as wide as others using flex-grow. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 21: Proportional Flex Grow</h3>
+        <p class="mb-2 text-sm text-slate-600">Middle item is twice as wide (<code>flex-grow: 2</code>, others <code>flex-grow: 1</code>).</p>
+        <div class="flex bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item flex-grow mr-2">Item 1 (Grow 1)</div>
+            <div class="flex-item flex-grow-[2] mr-2">Item 2 (Grow 2)</div>
+            <div class="flex-item flex-grow">Item 3 (Grow 1)</div>
+        </div>
+    </div>
+
+    <!-- Task 22: Use flex-basis to set fixed width of a flex item (flex-basis: 300px). -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 22: Flex Basis</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>flex-basis: 300px</code> (<code>basis-[300px]</code> in Tailwind) on the middle item.</p>
+        <div class="flex bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item mr-2">Item A</div>
+            <div class="flex-item basis-[300px] mr-2">Item B (Basis 300px)</div>
+            <div class="flex-item">Item C</div>
+        </div>
+    </div>
+
+    <!-- Task 23: Use flex-shrink: 0 to prevent one item from shrinking when the screen gets smaller. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 23: Flex Shrink</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>flex-shrink: 0</code> (<code>flex-shrink-0</code> in Tailwind) on the middle item to prevent shrinking.</p>
+        <div class="flex flex-nowrap overflow-x-auto bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item w-32 mr-2">Item 1</div>
+            <div class="flex-item flex-shrink-0 w-32 mr-2">Item 2 (No Shrink)</div>
+            <div class="flex-item w-32 mr-2">Item 3</div>
+            <div class="flex-item w-32">Item 4</div>
+        </div>
+        <p class="mt-2 text-xs text-slate-500">Shrink browser window to observe effect. Item 2 will maintain its width.</p>
+    </div>
+
+    <!-- Task 24: Combine flex: 1 shorthand to make all children equal width. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 24: Flex Shorthand (flex: 1)</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>flex: 1</code> (<code>flex-1</code> in Tailwind) on all items makes them equal width.</p>
+        <div class="flex bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item flex-1 mr-2">Item A</div>
+            <div class="flex-item flex-1 mr-2">Item B</div>
+            <div class="flex-item flex-1">Item C</div>
+        </div>
+    </div>
+
+    <!-- Align-Self & Nested Flex (Tasks 25-27) -->
+    <h2 class="section-title">Align-Self & Nested Flex (Tasks 25-27)</h2>
+
+    <!-- Task 25: Apply align-self: flex-start to one flex item to override container alignment. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 25: Align Self</h3>
+        <p class="mb-2 text-sm text-slate-600"><code>align-self: flex-start</code> (<code>self-start</code> in Tailwind) on one item overrides container's <code>align-items: center</code>.</p>
+        <div class="flex items-center h-40 bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item">Item 1 (Center)</div>
+            <div class="flex-item self-start">Item 2 (Self-Start)</div>
+            <div class="flex-item">Item 3 (Center)</div>
+        </div>
+    </div>
+
+    <!-- Task 26: Nest a flex container inside another (parent is row, child is column). -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 26: Nested Flex Containers</h3>
+        <p class="mb-2 text-sm text-slate-600">Parent is <code>flex-row</code>, child is <code>flex-col</code>.</p>
+        <div class="flex bg-gray-100 p-4 rounded-md border border-gray-200">
+            <div class="flex-item mr-4">Parent Item 1</div>
+            <!-- Nested Flex Container -->
+            <div class="flex flex-col flex-1 bg-gray-200 p-3 rounded-md">
+                <h4 class="text-base font-medium mb-2 text-slate-700">Nested Container (Column)</h4>
+                <div class="flex-item mb-2 !bg-blue-500">Nested Item A</div>
+                <div class="flex-item !bg-blue-500">Nested Item B</div>
+            </div>
+            <div class="flex-item ml-4">Parent Item 3</div>
+        </div>
+    </div>
+
+    <!-- Task 27: Create a sidebar layout using nested flex containers with main content and submenus. -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 27: Sidebar Layout with Nested Flex</h3>
+        <p class="mb-2 text-sm text-slate-600">A typical sidebar and main content layout.</p>
+        <div class="flex h-96 bg-gray-100 rounded-md border border-gray-200 overflow-hidden">
+            <!-- Sidebar (Flex Column) -->
+            <aside class="flex flex-col w-64 bg-gray-800 text-white p-4 shadow-lg">
+                <div class="font-bold text-xl mb-4">Dashboard</div>
+                <nav class="flex flex-col space-y-2">
+                    <a href="#" class="navbar-item !bg-transparent hover:!bg-gray-700">Overview</a>
+                    <a href="#" class="navbar-item !bg-transparent hover:!bg-gray-700">Analytics</a>
+                    <!-- Submenu (Nested Flex Column) -->
+                    <div class="flex flex-col pl-4 mt-2">
+                        <span class="text-sm text-gray-400 mb-1">Reports</span>
+                        <a href="#" class="navbar-item !bg-transparent text-sm hover:!bg-gray-700">Daily Sales</a>
+                        <a href="#" class="navbar-item !bg-transparent text-sm hover:!bg-gray-700">Monthly Trends</a>
+                    </div>
+                    <a href="#" class="navbar-item !bg-transparent hover:!bg-gray-700">Settings</a>
+                </nav>
+            </aside>
+            <!-- Main Content (Flex Grow) -->
+            <main class="flex-1 p-6 overflow-y-auto">
+                <h3 class="text-2xl font-semibold text-slate-800 mb-4">Main Content Area</h3>
+                <p class="text-slate-700 leading-relaxed">This is the main content area. It expands to fill the available space alongside the sidebar. The sidebar itself uses flex for its internal layout (logo, nav items, and a nested submenu).</p>
+                <div class="mt-4 p-4 bg-white rounded-lg shadow-md border border-gray-200">
+                    <h4 class="font-medium mb-2">Content Block</h4>
+                    <p class="text-sm text-slate-600">More content here, demonstrating the responsive nature of the layout.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Real-Life Layout Tasks (Tasks 28-30) -->
+    <h2 class="section-title">Real-Life Layout Tasks (Tasks 28-30)</h2>
+
+    <!-- Task 28: Build a responsive navigation bar using Flexbox (logo left, menu right). -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 28: Responsive Navigation Bar</h3>
+        <p class="mb-2 text-sm text-slate-600">Logo on left, menu on right. Menu collapses on small screens.</p>
+        <nav class="flex flex-col sm:flex-row items-center justify-between bg-indigo-600 text-white p-4 rounded-md shadow-md">
+            <!-- Logo -->
+            <div class="font-bold text-2xl mb-4 sm:mb-0 sm:mr-auto">BrandName</div>
+            <!-- Navigation Links -->
+            <div class="flex flex-col sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0 w-full sm:w-auto">
+                <a href="#" class="navbar-item text-center sm:text-left">Features</a>
+                <a href="#" class="navbar-item text-center sm:text-left">Pricing</a>
+                <a href="#" class="navbar-item text-center sm:text-left">Blog</a>
+                <a href="#" class="navbar-item text-center sm:text-left">Contact</a>
+            </div>
+        </nav>
+    </div>
+
+    <!-- Task 29: Design a 3-card layout (flex-row on large screens, column on mobile). -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 29: Responsive 3-Card Layout</h3>
+        <p class="mb-2 text-sm text-slate-600">Cards arrange in a row on large screens, stack vertically on mobile.</p>
+        <div class="flex flex-col md:flex-row gap-6 justify-center">
+            <!-- Card 1 -->
+            <div class="flex flex-col flex-1 min-w-[280px] bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                <h4 class="text-xl font-semibold mb-2 text-indigo-700">Card Title One</h4>
+                <p class="text-sm text-slate-700 mb-4">A brief description of the content for Card One. This demonstrates a flexible card structure.</p>
+                <button class="mt-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-md transition-colors">Learn More</button>
+            </div>
+            <!-- Card 2 -->
+            <div class="flex flex-col flex-1 min-w-[280px] bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                <h4 class="text-xl font-semibold mb-2 text-indigo-700">Card Title Two</h4>
+                <p class="text-sm text-slate-700 mb-4">Another description for Card Two. Flexbox makes it easy to manage responsive layouts.</p>
+                <button class="mt-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-md transition-colors">Details</button>
+            </div>
+            <!-- Card 3 -->
+            <div class="flex flex-col flex-1 min-w-[280px] bg-white border border-gray-200 rounded-lg shadow-lg p-6">
+                <h4 class="text-xl font-semibold mb-2 text-indigo-700">Card Title Three</h4>
+                <p class="text-sm text-slate-700 mb-4">The third card's content. Observe how the buttons align at the bottom using <code>mt-auto</code>.</p>
+                <button class="mt-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-2 px-4 rounded-md transition-colors">View Product</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Task 30: Create a pricing section with 3 different plans (use justify-content: space-evenly and align-items: flex-start). -->
+    <div class="mb-8 p-4 bg-white rounded-lg shadow-lg">
+        <h3 class="text-xl font-semibold mb-3">Task 30: Pricing Section</h3>
+        <p class="mb-2 text-sm text-slate-600">Pricing plans with even distribution and top-aligned content.</p>
+        <div class="flex flex-col lg:flex-row gap-8 justify-evenly items-start">
+            <!-- Basic Plan -->
+            <div class="flex flex-col w-full md:w-80 bg-white border border-gray-200 rounded-lg shadow-xl p-6 text-center">
+                <h4 class="text-2xl font-bold text-indigo-700 mb-2">Basic Plan</h4>
+                <p class="text-4xl font-extrabold text-gray-900 mb-4">$9<span class="text-base font-medium text-gray-500">/month</span></p>
+                <ul class="text-left text-sm text-slate-700 space-y-2 mb-6">
+                    <li>&#10003; 5 Users</li>
+                    <li>&#10003; 10 GB Storage</li>
+                    <li>&#10003; Basic Support</li>
+                </ul>
+                <button class="mt-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-md transition-colors">Choose Basic</button>
+            </div>
+            <!-- Pro Plan -->
+            <div class="flex flex-col w-full md:w-80 bg-indigo-700 text-white border border-indigo-700 rounded-lg shadow-xl p-6 text-center transform scale-105">
+                <h4 class="text-2xl font-bold mb-2">Pro Plan</h4>
+                <p class="text-4xl font-extrabold mb-4">$29<span class="text-base font-medium text-indigo-200">/month</span></p>
+                <ul class="text-left text-sm space-y-2 mb-6">
+                    <li>&#10003; 20 Users</li>
+                    <li>&#10003; 100 GB Storage</li>
+                    <li>&#10003; Priority Support</li>
+                    <li>&#10003; Advanced Analytics</li>
+                </ul>
+                <button class="mt-auto bg-white text-indigo-700 hover:bg-gray-100 font-bold py-3 px-6 rounded-md transition-colors">Choose Pro</button>
+            </div>
+            <!-- Enterprise Plan -->
+            <div class="flex flex-col w-full md:w-80 bg-white border border-gray-200 rounded-lg shadow-xl p-6 text-center">
+                <h4 class="text-2xl font-bold text-indigo-700 mb-2">Enterprise Plan</h4>
+                <p class="text-4xl font-extrabold text-gray-900 mb-4">$99<span class="text-base font-medium text-gray-500">/month</span></p>
+                <ul class="text-left text-sm text-slate-700 space-y-2 mb-6">
+                    <li>&#10003; Unlimited Users</li>
+                    <li>&#10003; Unlimited Storage</li>
+                    <li>&#10003; 24/7 Dedicated Support</li>
+                    <li>&#10003; Custom Integrations</li>
+                </ul>
+                <button class="mt-auto bg-indigo-500 hover:bg-indigo-600 text-white font-bold py-3 px-6 rounded-md transition-colors">Contact Sales</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
