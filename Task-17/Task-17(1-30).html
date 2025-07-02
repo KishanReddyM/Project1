@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo-Classes & Pseudo-Elements Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic styling for the body and container */
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* Align items to the start to prevent vertical centering issues with scroll */
+            min-height: 100vh;
+            background-color: #f0f2f5;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            display: grid;
+            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+        }
+
+        .demo-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .demo-section h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        /* Task 1: :hover - Button background color change */
+        .hover-button {
+            background-color: #3b82f6; /* Tailwind blue-500 */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .hover-button:hover {
+            background-color: #2563eb; /* Tailwind blue-600 */
+            transform: translateY(-2px); /* Slight lift */
+        }
+
+        /* Task 6: :focus - Input border color change */
+        .focused-input {
+            padding: 10px 15px;
+            border: 2px solid #d1d5db; /* Tailwind gray-300 */
+            border-radius: 8px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            max-width: 250px;
+        }
+
+        .focused-input:focus {
+            border-color: #3b82f6; /* Tailwind blue-500 */
+            outline: none; /* Remove default outline */
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); /* Blue glowing effect */
+        }
+
+        /* Task 9: :active - Button shrink on click */
+        .shrink-button {
+            background-color: #10b981; /* Tailwind emerald-500 */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .shrink-button:active {
+            transform: scale(0.95); /* Shrink slightly when clicked */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Task 16 & 27: ::before & :hover - Star list item */
+        .star-list {
+            list-style: none; /* Remove default bullet */
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            text-align: left;
+        }
+
+        .star-list li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 25px; /* Space for the star */
+            cursor: pointer;
+            color: #4b5563; /* Tailwind gray-700 */
+            font-size: 1.1rem;
+        }
+
+        .star-list li::before {
+            content: "★"; /* The star character */
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d1d5db; /* Default grey star */
+            transition: color 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .star-list li:hover::before {
+            color: #fbbf24; /* Gold star on hover */
+        }
+
+        /* Task 23: ::first-line - Paragraph styling */
+        .first-line-paragraph {
+            color: #4b5563; /* Tailwind gray-700 */
+            line-height: 1.6;
+            margin: 0;
+            text-align: left;
+        }
+
+        .first-line-paragraph::first-line {
+            font-weight: bold;
+            color: #ef4444; /* Tailwind red-500 */
+            font-size: 1.1em;
+        }
+
+        /* Task 29: Animated link underline ::after with :hover */
+        .animated-underline-link {
+            text-decoration: none;
+            color: #3b82f6; /* Tailwind blue-500 */
+            position: relative;
+            display: inline-block; /* Essential for ::after scaling correctly */
+            padding-bottom: 3px; /* Space for the underline */
+            font-weight: 600;
+            overflow: hidden; /* Hide overflow during animation */
+        }
+
+        .animated-underline-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #2563eb; /* Tailwind blue-600 */
+            transform: scaleX(0); /* Start with no width */
+            transform-origin: bottom right; /* Scale from right to left initially */
+            transition: transform 0.3s ease-out;
+        }
+
+        .animated-underline-link:hover::after {
+            transform: scaleX(1); /* Expand to full width on hover */
+            transform-origin: bottom left; /* Scale from left to right on hover */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* Single column on smaller screens */
+                padding: 20px;
+            }
+            .demo-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Button :hover effect -->
+        <div class="demo-section">
+            <h3>:hover (Button)</h3>
+            <button class="hover-button">Hover Me</button>
+        </div>
+
+        <!-- Input :focus effect -->
+        <div class="demo-section">
+            <h3>:focus (Input)</h3>
+            <input type="text" class="focused-input" placeholder="Focus on me">
+        </div>
+
+        <!-- Button :active effect -->
+        <div class="demo-section">
+            <h3>:active (Button)</h3>
+            <button class="shrink-button">Click Me</button>
+        </div>
+
+        <!-- ::before & :hover (List Item) -->
+        <div class="demo-section">
+            <h3>::before & :hover (List)</h3>
+            <ul class="star-list">
+                <li>Item One</li>
+                <li>Item Two</li>
+                <li>Item Three</li>
+            </ul>
+        </div>
+
+        <!-- ::first-line (Paragraph) -->
+        <div class="demo-section">
+            <h3>::first-line (Paragraph)</h3>
+            <p class="first-line-paragraph">
+                This is a sample paragraph to demonstrate the ::first-line pseudo-element.
+                The first line should appear in a different style, while the rest of the paragraph remains in default styling.
+            </p>
+        </div>
+
+        <!-- Animated underline ::after & :hover (Link) -->
+        <div class="demo-section">
+            <h3>::after & :hover (Link)</h3>
+            <a href="#" class="animated-underline-link">Animated Underline Link</a>
+        </div>
+    </div>
+</body>
+</html>
