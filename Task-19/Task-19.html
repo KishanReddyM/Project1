@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive CSS Concepts</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Apply Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light background for overall page */
+            color: #333;
+        }
+
+        /* Custom CSS for CSS Variables and specific media query examples */
+        :root {
+            /* CSS Variables with Responsiveness (21) */
+            --primary-color: #4f46e5; /* Indigo-600 */
+            --font-size-base: 16px;
+            --heading-font-size: 3rem; /* Default for h1 (22) */
+            --btn-padding: 1em 2em; /* (23) */
+            --btn-radius: 0.5rem;
+            --btn-color: var(--primary-color);
+            --section-spacing: 2rem; /* (24) */
+            --gap: 1rem; /* For calc() example (26) */
+            --card-gap: 1.5rem; /* (27) */
+            --card-bg: #ffffff;
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --container-width: 90%; /* (28) */
+            --side-padding: 1rem;
+            --font-scale: 1; /* Default font scale (29) */
+        }
+
+        /* Dark theme toggle (25) */
+        .dark-theme {
+            --primary-color: #818cf8; /* Indigo-400 for dark theme */
+            --card-bg: #1f2937; /* Gray-800 */
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            color: #e5e7eb; /* Light text */
+            background-color: #111827; /* Gray-900 */
+        }
+
+        /* Media query for dark theme (prefers-color-scheme) (25) */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #818cf8;
+                --card-bg: #1f2937;
+                --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+                color: #e5e7eb;
+                background-color: #111827;
+            }
+        }
+
+        /* Apply CSS variables */
+        h1 {
+            font-size: var(--heading-font-size); /* (22) */
+        }
+
+        .btn-variable {
+            padding: var(--btn-padding); /* (23) */
+            border-radius: var(--btn-radius);
+            background-color: var(--btn-color);
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .btn-variable:hover {
+            background-color: #6366f1; /* Slightly darker indigo */
+        }
+
+        .section-with-spacing {
+            padding: var(--section-spacing); /* (24) */
+        }
+
+        .calc-width-demo {
+            width: calc(100% - var(--gap)); /* (26) */
+            background-color: #d1d5db; /* Gray-300 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .card-variable {
+            background-color: var(--card-bg); /* (27) */
+            box-shadow: var(--card-shadow);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: var(--card-gap);
+        }
+
+        .responsive-wrapper-vars {
+            width: var(--container-width); /* (28) */
+            padding-left: var(--side-padding);
+            padding-right: var(--side-padding);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Adjust font scale for mobile (29) */
+        @media (max-width: 767px) {
+            :root {
+                --font-scale: 0.8; /* Smaller font on mobile */
+                --heading-font-size: 2rem; /* Smaller heading on mobile (22) */
+                --btn-padding: 0.8em 1.5em; /* Smaller button padding on mobile (23) */
+                --section-spacing: 1rem; /* Smaller section spacing on mobile (24) */
+                --side-padding: 0.5rem; /* Smaller side padding on mobile (28) */
+            }
+        }
+
+        body {
+            font-size: calc(var(--font-size-base) * var(--font-scale)); /* Apply font scale (29) */
+        }
+
+        /* Specific media query for hiding image (12) */
+        @media (max-width: 599px) {
+            .hide-on-small-screen {
+                display: none;
+            }
+        }
+
+        /* Specific media query for background color changes (14) */
+        .bg-breakpoint-demo {
+            background-color: #fecaca; /* Mobile: Red-200 */
+        }
+        @media (min-width: 768px) { /* Tablet */
+            .bg-breakpoint-demo {
+                background-color: #bfdbfe; /* Blue-200 */
+            }
+        }
+        @media (min-width: 1024px) { /* Desktop */
+            .bg-breakpoint-demo {
+                background-color: #d1fae5; /* Green-200 */
+            }
+        }
+
+        /* Specific media query for heading font size reduction (18) */
+        @media (max-width: 479px) {
+            .heading-responsive-font {
+                font-size: 2rem !important; /* Override Tailwind for demonstration */
+            }
+        }
+
+        /* Specific media query for layout direction change (19) */
+        .flex-direction-demo {
+            flex-direction: row;
+        }
+        @media (max-width: 767px) {
+            .flex-direction-demo {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-[1200px] mx-auto bg-white rounded-xl shadow-lg p-6 sm:p-10 my-8">
+        <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-8 text-center heading-responsive-font">
+            Responsive CSS Concepts Demo
+        </h1>
+
+        <!-- Section 1: Scaling (1-9) -->
+        <section class="mb-12 p-6 bg-blue-50 rounded-lg shadow-sm">
+            <h2 class="text-3xl font-semibold text-blue-800 mb-4">🔹 1-9: Scaling & Basic Layout</h2>
+
+            <!-- Paragraph with font-size: 1.5em nested inside a container with font-size: 20px (1) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">1. Font Scaling Demonstration</h3>
+                <div class="text-[20px] bg-blue-200 p-3 rounded-md">
+                    This is the parent container with a base font size of 20px.
+                    <p class="text-[1.5em] mt-2 p-2 bg-blue-300 rounded-md">
+                        This paragraph has a font size of 1.5em, so it scales relative to its parent.
+                        Observe how its size changes if you modify the parent's font size.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Layout container with width: 90% and centered (2) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">2. Centered Layout Container (90% width)</h3>
+                <div class="w-[90%] mx-auto bg-blue-200 p-4 rounded-md text-center">
+                    This container has a width of 90% and is centered horizontally using `margin: auto`.
+                    It adapts to the screen width.
+                </div>
+            </div>
+
+            <!-- Heading with font-size: 5vw (3) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">3. Responsive Heading (5vw font-size)</h3>
+                <h2 class="text-[5vw] text-center font-bold text-blue-700 bg-blue-200 p-3 rounded-md">
+                    SCALING HEADING
+                </h2>
+                <p class="text-sm text-center mt-2">Resize your browser window to see this heading scale.</p>
+            </div>
+
+            <!-- Full-height section using height: 100vh (4) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">4. Full-Height Section (100vh)</h3>
+                <div class="h-screen bg-blue-200 flex items-center justify-center rounded-md text-center text-blue-700 font-semibold">
+                    This section attempts to take up the full viewport height (100vh).
+                </div>
+            </div>
+
+            <!-- Min-height: 100vh and center content with display: flex (5) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">5. Min-Height 100vh with Centered Content</h3>
+                <div class="min-h-screen bg-blue-200 flex items-center justify-center rounded-md text-center text-blue-700 font-semibold">
+                    This section ensures a minimum height of 100vh and centers its content using flexbox.
+                </div>
+            </div>
+
+            <!-- Padding: 2rem and margin: 5% to a card layout (6) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">6. Card Spacing (Padding: 2rem, Margin: 5%)</h3>
+                <div class="bg-white rounded-lg shadow-md p-8 m-[5%_auto] w-[90%] text-center border border-gray-200">
+                    This card demonstrates generous padding (2rem) and a 5% margin on all sides (horizontally centered with auto).
+                    Observe the internal and external spacing.
+                </div>
+            </div>
+
+            <!-- Image with width: 80% and responsive (7) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">7. Responsive Image (80% width)</h3>
+                <img src="https://placehold.co/600x400/818cf8/ffffff?text=Responsive+Image" alt="Responsive Placeholder Image"
+                     class="w-[80%] max-w-full h-auto mx-auto rounded-lg shadow-md block"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x400/cccccc/333333?text=Image+Error';"
+                >
+                <p class="text-sm text-center mt-2">This image takes 80% of its parent's width and is responsive.</p>
+            </div>
+
+            <!-- Line-height: 1.5em on paragraphs (8) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">8. Paragraph Readability (1.5em Line-Height)</h3>
+                <p class="leading-[1.5em] text-gray-700 bg-blue-200 p-3 rounded-md">
+                    This paragraph has a line-height of 1.5em. This spacing between lines significantly
+                    improves readability, especially for longer blocks of text. It prevents lines from
+                    feeling too cramped together, making the content easier on the eyes.
+                </p>
+            </div>
+
+            <!-- Button size using padding: 1em 2em and adjust base font (9) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">9. Scalable Button (Padding: 1em 2em)</h3>
+                <button class="bg-indigo-600 text-white px-[2em] py-[1em] rounded-lg shadow-md hover:bg-indigo-700 transition-colors text-base mx-auto block">
+                    Click Me (Scales with Font)
+                </button>
+                <p class="text-sm text-center mt-2">
+                    The button's padding is relative to its font size. Change the base font size to see it scale.
+                </p>
+            </div>
+
+            <!-- Max-width: 1200px on a wrapper and center it (10) -->
+            <div class="mb-6 p-4 border border-blue-200 rounded-md bg-blue-100">
+                <h3 class="text-xl font-medium mb-2">10. Max-Width Wrapper (1200px)</h3>
+                <div class="max-w-[1200px] mx-auto bg-blue-200 p-4 rounded-md text-center border border-blue-300">
+                    This content is inside a wrapper with a maximum width of 1200px, centered on the screen.
+                    It prevents content from stretching too wide on large displays.
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Media Queries in Action (11-20) -->
+        <section class="mb-12 p-6 bg-green-50 rounded-lg shadow-sm">
+            <h2 class="text-3xl font-semibold text-green-800 mb-4">🔹 11-20: Media Queries in Action</h2>
+
+            <!-- Layout with two columns and switch to one column when screen width is <768px (11) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">11. Two-Column to One-Column Layout</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-green-200 p-4 rounded-md text-center">Column 1</div>
+                    <div class="bg-green-200 p-4 rounded-md text-center">Column 2</div>
+                </div>
+                <p class="text-sm text-center mt-2">
+                    Resize the window: above 768px, it's two columns; below, it's one.
+                </p>
+            </div>
+
+            <!-- Use a media query to change font size for mobile devices (12) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">12. Font Size Change for Mobile</h3>
+                <p class="text-lg sm:text-base bg-green-200 p-3 rounded-md">
+                    This text is larger on desktop (text-lg) and smaller on mobile (sm:text-base, i.e., default base font size).
+                </p>
+            </div>
+
+            <!-- Hide an image when the screen width is below 600px (13) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">13. Hide Image on Small Screens</h3>
+                <img src="https://placehold.co/400x200/99f6e4/065f46?text=Hidden+on+Small" alt="Image hidden on small screens"
+                     class="w-full max-w-xs mx-auto rounded-lg shadow-md hide-on-small-screen"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x200/cccccc/333333?text=Image+Error';"
+                >
+                <p class="text-sm text-center mt-2">
+                    This image will disappear when the screen width is below 600px.
+                </p>
+            </div>
+
+            <!-- Create a navbar that stacks vertically on small screens (14) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">14. Responsive Navbar Stacking</h3>
+                <nav class="bg-green-700 p-4 rounded-md">
+                    <ul class="flex flex-col sm:flex-row justify-around items-center text-white">
+                        <li class="mb-2 sm:mb-0"><a href="#" class="hover:text-green-200 p-2 rounded">Home</a></li>
+                        <li class="mb-2 sm:mb-0"><a href="#" class="hover:text-green-200 p-2 rounded">About</a></li>
+                        <li class="mb-2 sm:mb-0"><a href="#" class="hover:text-green-200 p-2 rounded">Services</a></li>
+                        <li><a href="#" class="hover:text-green-200 p-2 rounded">Contact</a></li>
+                    </ul>
+                </nav>
+                <p class="text-sm text-center mt-2">
+                    The navigation links stack vertically on small screens and horizontally on larger screens.
+                </p>
+            </div>
+
+            <!-- Change background color of a section at different breakpoints (15) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">15. Background Color by Breakpoint</h3>
+                <div class="bg-breakpoint-demo p-6 rounded-md text-center text-gray-800 font-semibold">
+                    This section's background color changes based on screen width:
+                    <span class="font-bold">Red (mobile), Blue (tablet), Green (desktop).</span>
+                </div>
+            </div>
+
+            <!-- Adjust image sizes (max-width) using media queries (16) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">16. Image Max-Width with Media Queries</h3>
+                <img src="https://placehold.co/600x300/a78bfa/ffffff?text=Scalable+Image" alt="Scalable Image"
+                     class="w-full sm:max-w-md md:max-w-lg mx-auto rounded-lg shadow-md block"
+                     onerror="this.onerror=null;this.src='https://placehold.co/600x300/cccccc/333333?text=Image+Error';"
+                >
+                <p class="text-sm text-center mt-2">
+                    Image max-width changes: full on mobile, medium on tablet, large on desktop.
+                </p>
+            </div>
+
+            <!-- Change card layout from row to column below 992px (17) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">17. Card Layout: Row to Column</h3>
+                <div class="flex flex-col lg:flex-row gap-4">
+                    <div class="flex-1 bg-white p-4 rounded-lg shadow-sm text-center">Card 1</div>
+                    <div class="flex-1 bg-white p-4 rounded-lg shadow-sm text-center">Card 2</div>
+                    <div class="flex-1 bg-white p-4 rounded-lg shadow-sm text-center">Card 3</div>
+                </div>
+                <p class="text-sm text-center mt-2">
+                    Cards are in a row on large screens, stack vertically below 992px.
+                </p>
+            </div>
+
+            <!-- Use media queries to change padding/margin on container for mobile (18) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">18. Responsive Padding/Margin</h3>
+                <div class="p-8 m-4 sm:p-4 sm:m-2 bg-green-200 rounded-md text-center">
+                    This container has larger padding/margin on desktop, reduced on small screens.
+                </div>
+                <p class="text-sm text-center mt-2">
+                    Padding/margin adjusts for better mobile viewing.
+                </p>
+            </div>
+
+            <!-- Reduce heading font size on devices narrower than 480px (19) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">19. Heading Font Size Reduction (&lt; 480px)</h3>
+                <h2 class="text-4xl text-center font-bold text-green-700 bg-green-200 p-3 rounded-md heading-responsive-font">
+                    SMALLER HEADING ON TINY SCREENS
+                </h2>
+                <p class="text-sm text-center mt-2">
+                    This heading reduces its font size significantly below 480px.
+                </p>
+            </div>
+
+            <!-- Add a media query to change layout direction (flex-direction) from row to column (20) -->
+            <div class="mb-6 p-4 border border-green-200 rounded-md bg-green-100">
+                <h3 class="text-xl font-medium mb-2">20. Flex-Direction Change (Row to Column)</h3>
+                <div class="flex flex-row md:flex-col gap-4 flex-direction-demo bg-green-200 p-4 rounded-md">
+                    <div class="flex-1 bg-white p-3 rounded-md text-center">Item A</div>
+                    <div class="flex-1 bg-white p-3 rounded-md text-center">Item B</div>
+                    <div class="flex-1 bg-white p-3 rounded-md text-center">Item C</div>
+                </div>
+                <p class="text-sm text-center mt-2">
+                    Items are in a row by default, stack vertically on screens smaller than 768px.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section 3: CSS Variables with Responsiveness (21-30) -->
+        <section class="mb-12 p-6 bg-purple-50 rounded-lg shadow-sm">
+            <h2 class="text-3xl font-semibold text-purple-800 mb-4">🔹 21-30: CSS Variables & Responsiveness</h2>
+
+            <!-- Define --primary-color and --font-size-base in :root, and apply them globally (21) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">21. Global CSS Variables (--primary-color, --font-size-base)</h3>
+                <p class="text-gray-700 bg-purple-200 p-3 rounded-md">
+                    The primary color for buttons and the base font size are defined in `:root` and applied globally.
+                    Current primary color: <span class="font-bold" style="color: var(--primary-color);">This text uses --primary-color.</span>
+                    <br>
+                    Current base font size: <span class="font-bold">This text uses the calculated base font size.</span>
+                </p>
+            </div>
+
+            <!-- Use --heading-font-size for all h1, and scale it using media queries (22) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">22. Scalable H1 with --heading-font-size</h3>
+                <h1 class="text-center font-bold text-purple-700 bg-purple-200 p-3 rounded-md">
+                    H1 SCALED BY VARIABLE
+                </h1>
+                <p class="text-sm text-center mt-2">
+                    The H1 above uses `--heading-font-size` which is scaled down via media queries for smaller screens.
+                </p>
+            </div>
+
+            <!-- Create a responsive button using --btn-padding, --btn-radius, and --btn-color (23) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">23. Responsive Button with CSS Variables</h3>
+                <button class="btn-variable mx-auto block">
+                    Variable Button
+                </button>
+                <p class="text-sm text-center mt-2">
+                    This button's padding, border-radius, and color are controlled by CSS variables,
+                    which also adapt on smaller screens.
+                </p>
+            </div>
+
+            <!-- Define --section-spacing and apply to multiple sections using padding (24) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">24. Section Spacing with --section-spacing</h3>
+                <div class="section-with-spacing bg-purple-200 rounded-md mb-4 text-center">
+                    This section uses `--section-spacing` for its padding.
+                </div>
+                <div class="section-with-spacing bg-purple-200 rounded-md text-center">
+                    So does this one, ensuring consistent spacing.
+                </div>
+                <p class="text-sm text-center mt-2">
+                    Observe how section padding changes on mobile due to variable adjustment.
+                </p>
+            </div>
+
+            <!-- Override --primary-color for .dark-theme using class (25) -->
+            <!-- Create light and dark themes using CSS variables and toggle with media queries (prefers-color-scheme) (25) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">25. Light/Dark Theme & Variable Override</h3>
+                <div class="bg-gray-100 p-4 rounded-md text-center mb-4">
+                    This box uses the default (light) theme's primary color:
+                    <span class="font-bold" style="color: var(--primary-color);">Primary Color</span>
+                </div>
+                <div class="dark-theme p-4 rounded-md text-center text-white">
+                    This box has the <code class="font-mono">.dark-theme</code> class applied, overriding
+                    <code class="font-mono">--primary-color</code> and other theme variables.
+                    <br>
+                    Its primary color is now: <span class="font-bold" style="color: var(--primary-color);">Dark Theme Primary Color</span>
+                </div>
+                <p class="text-sm text-center mt-2">
+                    Also, try changing your system's color scheme (light/dark mode) to see the global theme toggle via `prefers-color-scheme`.
+                </p>
+            </div>
+
+            <!-- Use calc() with variables: width: calc(100% - var(--gap)) (26) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">26. `calc()` with CSS Variables</h3>
+                <div class="calc-width-demo text-center">
+                    This element's width is calculated as `calc(100% - var(--gap))`.
+                    The `--gap` variable is 1rem.
+                </div>
+                <p class="text-sm text-center mt-2">
+                    This demonstrates dynamic sizing using CSS `calc()` and variables.
+                </p>
+            </div>
+
+            <!-- Use --card-gap, --card-bg, --card-shadow across multiple components (27) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">27. Card Styling with CSS Variables</h3>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="card-variable text-center">
+                        <h4 class="font-semibold text-lg mb-2">Card One</h4>
+                        <p>This card uses `--card-bg` and `--card-shadow`.</p>
+                    </div>
+                    <div class="card-variable text-center">
+                        <h4 class="font-semibold text-lg mb-2">Card Two</h4>
+                        <p>All cards share the same variable-defined styles.</p>
+                    </div>
+                </div>
+                <p class="text-sm text-center mt-2">
+                    The gap between cards is also controlled by `--card-gap`.
+                </p>
+            </div>
+
+            <!-- Create a responsive layout using variables like --container-width, --side-padding (28) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">28. Responsive Layout with Container Variables</h3>
+                <div class="responsive-wrapper-vars bg-purple-200 p-4 rounded-md text-center">
+                    This content is inside a responsive wrapper.
+                    Its width and side padding are defined by `--container-width` and `--side-padding`,
+                    which adjust on smaller screens.
+                </div>
+                <p class="text-sm text-center mt-2">
+                    Observe how the width and padding of this container change with screen size.
+                </p>
+            </div>
+
+            <!-- Define --font-scale and apply to body; then adjust :root --font-scale for mobile via media query (29) -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">29. Global Font Scaling with --font-scale</h3>
+                <p class="text-gray-700 bg-purple-200 p-3 rounded-md">
+                    The overall font size of the body is multiplied by `--font-scale`.
+                    On mobile, `--font-scale` is reduced, making all text proportionally smaller.
+                    This text demonstrates the effect of `--font-scale`.
+                </p>
+                <p class="text-sm text-center mt-2">
+                    Resize your window to see the global text size adjust.
+                </p>
+            </div>
+
+            <!-- Add a media query to change layout direction (flex-direction) from row to column (30) -->
+            <!-- This was already covered in point 20, but I'll add a specific callout here for clarity -->
+            <div class="mb-6 p-4 border border-purple-200 rounded-md bg-purple-100">
+                <h3 class="text-xl font-medium mb-2">30. Flex-Direction Change (Row to Column) - Revisited</h3>
+                <div class="flex flex-row md:flex-col gap-4 flex-direction-demo bg-purple-200 p-4 rounded-md">
+                    <div class="flex-1 bg-white p-3 rounded-md text-center">Item X</div>
+                    <div class="flex-1 bg-white p-3 rounded-md text-center">Item Y</div>
+                    <div class="flex-1 bg-white p-3 rounded-md text-center">Item Z</div>
+                </div>
+                <p class="text-sm text-center mt-2">
+                    This is another example of `flex-direction` changing from row to column on smaller screens,
+                    demonstrating a fundamental responsive layout technique.
+                </p>
+            </div>
+        </section>
+
+    </div>
+</body>
+</html>
