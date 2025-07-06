@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Multi-theme Pricing Page</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Apply Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+        }
+
+        /* CSS Variables for theming */
+        :root {
+            /* Light Theme Defaults */
+            --bg-color: #f0f4f8; /* Light background */
+            --text-color: #333;
+            --primary-color: #4f46e5; /* Indigo-600 */
+            --secondary-color: #6366f1; /* Indigo-500 */
+            --card-bg: #ffffff;
+            --card-border: #e2e8f0; /* Gray-200 */
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --button-text-color: #ffffff;
+            --input-border: #cbd5e1; /* Slate-300 */
+            --input-focus-border: #4f46e5; /* Primary color */
+        }
+
+        /* Dark Theme via prefers-color-scheme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-color: #1a202c; /* Dark background */
+                --text-color: #e2e8f0; /* Light text */
+                --primary-color: #818cf8; /* Indigo-400 */
+                --secondary-color: #a5b4fc; /* Indigo-300 */
+                --card-bg: #2d3748; /* Darker card background */
+                --card-border: #4a5568; /* Darker border */
+                --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+                --button-text-color: #1a202c; /* Dark text for light buttons */
+                --input-border: #4a5568;
+                --input-focus-border: #818cf8;
+            }
+        }
+
+        /* Manual Dark Theme Toggle (overrides prefers-color-scheme) */
+        body.dark-mode {
+            --bg-color: #1a202c;
+            --text-color: #e2e8f0;
+            --primary-color: #818cf8;
+            --secondary-color: #a5b4fc;
+            --card-bg: #2d3748;
+            --card-border: #4a5568;
+            --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            --button-text-color: #1a202c;
+            --input-border: #4a5568;
+            --input-focus-border: #818cf8;
+        }
+
+        /* Apply variables to body */
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+
+        /* Pricing Card Styles */
+        .pricing-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Card animation */
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px) scale(1.02); /* Bounce/scale on hover */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--button-text-color);
+            transition: background-color 0.3s ease, transform 0.1s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-primary:active {
+            transform: translateY(2px);
+        }
+
+        /* Input Focus Pseudo-class */
+        .form-input:focus {
+            outline: none;
+            border-color: var(--input-focus-border);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3); /* Ring effect */
+        }
+
+        /* Theme Toggle Button Styles */
+        #themeToggle {
+            background-color: var(--primary-color);
+            color: var(--button-text-color);
+            transition: background-color 0.3s ease;
+        }
+        #themeToggle:hover {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+    <div class="max-w-6xl mx-auto py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-5xl font-extrabold mb-4">Choose Your Plan</h1>
+            <p class="text-xl text-gray-600 dark:text-gray-300">Simple, transparent pricing for everyone.</p>
+            <button id="themeToggle" class="mt-6 px-6 py-3 rounded-full font-semibold shadow-md">
+                Toggle Theme
+            </button>
+        </header>
+
+        <!-- Pricing Cards Section -->
+        <section class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <!-- Free Plan Card -->
+            <div class="pricing-card rounded-xl p-8 flex flex-col items-center text-center">
+                <h2 class="text-3xl font-bold mb-4">Free</h2>
+                <p class="text-5xl font-extrabold mb-4">$0<span class="text-xl font-medium">/month</span></p>
+                <ul class="text-gray-700 dark:text-gray-300 text-lg mb-8 space-y-2">
+                    <li>✔️ 1 User</li>
+                    <li>✔️ 10 Projects</li>
+                    <li>✔️ Basic Analytics</li>
+                    <li>✔️ Community Support</li>
+                </ul>
+                <button class="btn-primary w-full py-3 rounded-lg font-semibold text-lg">
+                    Sign Up for Free
+                </button>
+            </div>
+
+            <!-- Standard Plan Card -->
+            <div class="pricing-card rounded-xl p-8 flex flex-col items-center text-center border-2 border-primary-color">
+                <h2 class="text-3xl font-bold mb-4 text-primary-color">Standard</h2>
+                <p class="text-5xl font-extrabold mb-4">$29<span class="text-xl font-medium">/month</span></p>
+                <ul class="text-gray-700 dark:text-gray-300 text-lg mb-8 space-y-2">
+                    <li>✔️ 5 Users</li>
+                    <li>✔️ Unlimited Projects</li>
+                    <li>✔️ Advanced Analytics</li>
+                    <li>✔️ Priority Email Support</li>
+                    <li>✔️ Custom Branding</li>
+                </ul>
+                <button class="btn-primary w-full py-3 rounded-lg font-semibold text-lg">
+                    Get Started
+                </button>
+            </div>
+
+            <!-- Pro Plan Card -->
+            <div class="pricing-card rounded-xl p-8 flex flex-col items-center text-center">
+                <h2 class="text-3xl font-bold mb-4">Pro</h2>
+                <p class="text-5xl font-extrabold mb-4">$99<span class="text-xl font-medium">/month</span></p>
+                <ul class="text-gray-700 dark:text-gray-300 text-lg mb-8 space-y-2">
+                    <li>✔️ Unlimited Users</li>
+                    <li>✔️ All Features</li>
+                    <li>✔️ Dedicated Account Manager</li>
+                    <li>✔️ 24/7 Phone Support</li>
+                    <li>✔️ API Access</li>
+                </ul>
+                <button class="btn-primary w-full py-3 rounded-lg font-semibold text-lg">
+                    Contact Sales
+                </button>
+            </div>
+        </section>
+
+        <!-- Subscription Form Section -->
+        <section class="max-w-xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-center mb-6">Subscribe Now!</h2>
+            <form class="space-y-6">
+                <div>
+                    <label for="name" class="block text-lg font-medium mb-2">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="John Doe"
+                           class="form-input w-full px-4 py-3 rounded-lg border border-input-border bg-gray-50 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-primary-color transition-colors duration-200" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-lg font-medium mb-2">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="you@example.com"
+                           class="form-input w-full px-4 py-3 rounded-lg border border-input-border bg-gray-50 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-primary-color transition-colors duration-200" required>
+                </div>
+                <div>
+                    <label for="plan" class="block text-lg font-medium mb-2">Select Plan</label>
+                    <select id="plan" name="plan"
+                            class="form-input w-full px-4 py-3 rounded-lg border border-input-border bg-gray-50 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-primary-color transition-colors duration-200">
+                        <option value="free">Free</option>
+                        <option value="standard">Standard</option>
+                        <option value="pro">Pro</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary w-full py-3 rounded-lg font-semibold text-lg">
+                    Subscribe
+                </button>
+            </form>
+        </section>
+    </div>
+
+    <script>
+        // JavaScript for Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Function to set theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                setTheme(savedTheme);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                // If no saved theme, check system preference
+                setTheme('dark');
+            } else {
+                setTheme('light'); // Default to light
+            }
+        });
+
+        // Event listener for theme toggle button
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+    </script>
+</body>
+</html>
