@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Tasks</title>
+    <style>
+        /* Basic styles for clarity */
+        body { font-family: sans-serif; padding: 20px; transition: background-color 0.3s, color 0.3s; }
+        h2 { border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 40px; }
+        div, section, button, input, p, li, a { margin-bottom: 10px; padding: 5px; border-radius: 4px; }
+        div, section, input, li { border: 1px solid #ccc; }
+        img { max-width: 100px; display: block; margin-bottom: 10px; transition: all 0.3s ease; }
+        .card { padding: 15px; border: 1px solid #ddd; transition: all 0.3s ease; }
+        
+        /* 🟦 Part 3: ClassList Styles 🟦 */
+        .active { background-color: #4CAF50; color: white; }
+        .error { border-color: red; outline-color: red; }
+        .dark-mode { background-color: #333; color: #f1f1f1; }
+        .dark-mode div, .dark-mode section, .dark-mode p, .dark-mode li, .dark-mode input { border-color: #555; background-color: #444; }
+        .dark-mode button { background-color: #555; color: #f1f1f1; border: 1px solid #666;}
+        .selected { background-color: lightblue; }
+        .btn { padding: 8px 12px; border: none; cursor: pointer; }
+        .btn-primary { background-color: #007BFF; color: white; }
+        .list-item { background-color: #f0f0f0; }
+        .highlight { box-shadow: 0 0 15px rgba(255, 215, 0, 0.8); border-color: gold; }
+        .hidden { display: none; }
+        .modal { transition: all 0.3s ease; }
+        .modal.close { opacity: 0; transform: scale(0.9); }
+        .modal.open { opacity: 1; transform: scale(1); }
+        .hovered { border-color: #007BFF; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+    <h1>DOM Manipulation Showcase</h1>
+
+    <h2>Part 1: Attributes</h2>
+    <a id="link1" href="https://www.google.com">Task 1: Link to Google (href logged to console)</a>
+    <img id="image1" src="https://via.placeholder.com/100" alt="Placeholder 1"> <a id="link2" href="#">Task 3: This link now goes to Bing</a>
+    <img id="image2" src="https://via.placeholder.com/100" alt="Placeholder 2"> <div id="dataDiv">Task 5: I have a new 'data-id' attribute (inspect to see).</div>
+    <p>Task 6: The links below will now open in a new tab.</p>
+    <a href="#">Link A</a> <a href="#">Link B</a>
+    <input id="requiredInput" type="text" required> (Task 7: Check if required - see console)
+    <img id="image3" src="https://via.placeholder.com/100" alt="Task 8: This alt text has been removed.">
+    <input id="placeholderInput" type="text">
+    <div id="newElementContainer">Task 10: A new element will be added here -> </div>
+
+    <h2>Part 2: Styles</h2>
+    <div id="bgColorDiv">Task 11: My background color is now lightblue.</div>
+    <h3 id="fontSizeHeading">Task 12: My font size is now 32px.</h3>
+    <section id="hideSection">Task 13: This section has been hidden.</section>
+    <p id="showPara" style="display: none;">Task 14: This hidden paragraph is now visible.</p>
+    <div id="borderDiv">Task 15: I have a 2px solid red border.</div>
+    <button id="toggleVisibilityBtn">Toggle Box Visibility</button>
+    <div id="visibilityBox">Task 16: My visibility can be toggled.</div>
+    <p class="color-para">Task 17: I am now blue.</p>
+    <p class="color-para">Task 17: I am also now blue.</p>
+    <div id="card-style" class="card">Task 18: My padding and margin have increased.</div>
+    <img id="rotateImage" src="https://via.placeholder.com/100" alt="Rotate me"> <div id="animateBox" style="position: relative;">Task 20: I am animated slightly to the right.</div>
+
+    <h2>Part 3: ClassList</h2>
+    <button id="activeButton">Task 21: Click to add 'active' class</button>
+    <input id="errorField" class="error" type="text" value="Task 22: Type here to remove 'error' class">
+    <button id="darkModeButton">Task 23: Toggle Dark Mode</button>
+    <div id="selectedEl" class="selected">Task 24: I have the 'selected' class (see console).</div>
+    <button id="multiClassBtn">Task 25: I have new classes ('btn', 'btn-primary').</button>
+    <ul id="classListUl">
+        <li>Task 26: I have a new class.</li>
+        <li>Task 26: I also have a new class.</li>
+    </ul>
+    <button id="highlightBtn">Toggle Highlight</button>
+    <div id="highlightCard" class="card">Task 27: Highlight me.</div>
+    <p>Task 28: This is a paragraph.</p>
+    <div>
+        <button id="hideAllPBtn">Hide All Paragraphs</button>
+        <button id="showAllPBtn">Show All Paragraphs</button>
+    </div>
+    <button id="toggleModalBtn">Toggle Modal ('open'/'close' classes)</button>
+    <div id="modalBox" class="modal close">Task 29: I am a modal.</div>
+    <div id="hoverDiv">Task 30: Hover over me!</div>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 🟩 Part 1: Changing Attributes
+    // ===================================
+    console.log("--- Part 1: Attributes ---");
+    // Task 1: Log href of an <a> tag
+    console.log('Task 1 - Href:', document.getElementById('link1').getAttribute('href'));
+
+    // Task 2: Log src of an <img> tag
+    console.log('Task 2 - Src:', document.getElementById('image1').getAttribute('src'));
+
+    // Task 3: Change href of an anchor tag
+    document.getElementById('link2').setAttribute('href', 'https://www.bing.com');
+
+    // Task 4: Change src of an image
+    document.getElementById('image2').setAttribute('src', 'https://via.placeholder.com/150/0000FF/808080');
+
+    // Task 5: Set a custom data-id attribute
+    document.getElementById('dataDiv').setAttribute('data-id', '12345');
+
+    // Task 6: Add target="_blank" to all anchor tags
+    document.querySelectorAll('a').forEach(link => link.setAttribute('target', '_blank'));
+
+    // Task 7: Check if an input field is required
+    console.log('Task 7 - Is input required?', document.getElementById('requiredInput').hasAttribute('required'));
+
+    // Task 8: Remove the alt attribute from an image
+    document.getElementById('image3').removeAttribute('alt');
+
+    // Task 9: Set placeholder text for an input box
+    document.getElementById('placeholderInput').setAttribute('placeholder', 'Task 9: Enter your name');
+
+    // Task 10: Set an id on a new dynamically created element
+    const newElement = document.createElement('span');
+    newElement.setAttribute('id', 'newlyCreatedElement');
+    newElement.textContent = 'I have a new ID!';
+    document.getElementById('newElementContainer').appendChild(newElement);
+
+
+    // 🟦 Part 2: Modifying Styles
+    // ===================================
+    // Task 11: Change background color
+    document.getElementById('bgColorDiv').style.backgroundColor = 'lightblue';
+
+    // Task 12: Set font size
+    document.getElementById('fontSizeHeading').style.fontSize = '32px';
+
+    // Task 13: Change display to none
+    document.getElementById('hideSection').style.display = 'none';
+
+    // Task 14: Show a hidden paragraph
+    document.getElementById('showPara').style.display = 'block';
+
+    // Task 15: Change border
+    document.getElementById('borderDiv').style.border = '2px solid red';
+
+    // Task 16: Toggle visibility
+    document.getElementById('toggleVisibilityBtn').addEventListener('click', () => {
+        const box = document.getElementById('visibilityBox');
+        box.style.display = (box.style.display === 'none') ? 'block' : 'none';
+    });
+
+    // Task 17: Change color of all paragraphs to blue
+    document.querySelectorAll('.color-para').forEach(p => p.style.color = 'blue');
+
+    // Task 18: Increase padding and margin
+    const cardStyle = document.getElementById('card-style');
+    cardStyle.style.padding = '30px';
+    cardStyle.style.margin = '20px';
+
+    // Task 19: Rotate an image
+    document.getElementById('rotateImage').style.transform = 'rotate(10deg)';
+
+    // Task 20: Animate a box slightly to the right
+    const animateBox = document.getElementById('animateBox');
+    animateBox.style.transition = 'left 0.5s ease-in-out';
+    setTimeout(() => { animateBox.style.left = '50px'; }, 500);
+
+
+    // 🟥 Part 3: ClassList Methods
+    // ===================================
+    console.log("--- Part 3: ClassList ---");
+    // Task 21: Add a class on click
+    document.getElementById('activeButton').addEventListener('click', function() { this.classList.add('active'); });
+
+    // Task 22: Remove a class on valid input
+    document.getElementById('errorField').addEventListener('input', function() { if (this.value.trim() !== '') this.classList.remove('error'); });
+
+    // Task 23: Toggle a class on the body
+    document.getElementById('darkModeButton').addEventListener('click', () => document.body.classList.toggle('dark-mode'));
+
+    // Task 24: Check if an element has a class
+    console.log('Task 24 - Has "selected" class?', document.getElementById('selectedEl').classList.contains('selected'));
+
+    // Task 25: Add multiple classes at once
+    document.getElementById('multiClassBtn').classList.add('btn', 'btn-primary');
+
+    // Task 26: Loop and add a class
+    document.querySelectorAll('#classListUl li').forEach(item => item.classList.add('list-item'));
+
+    // Task 27: Toggle a highlight class
+    document.getElementById('highlightBtn').addEventListener('click', () => document.getElementById('highlightCard').classList.toggle('highlight'));
+
+    // Task 28: Add/Remove a class from all paragraphs
+    const allParagraphs = document.querySelectorAll('p');
+    document.getElementById('hideAllPBtn').addEventListener('click', () => allParagraphs.forEach(p => p.classList.add('hidden')));
+    document.getElementById('showAllPBtn').addEventListener('click', () => allParagraphs.forEach(p => p.classList.remove('hidden')));
+
+    // Task 29: Switch between two classes
+    document.getElementById('toggleModalBtn').addEventListener('click', () => {
+        const modalBox = document.getElementById('modalBox');
+        modalBox.classList.toggle('open');
+        modalBox.classList.toggle('close');
+    });
+
+    // Task 30: Add/Remove class on mouseover/mouseout
+    const hoverDiv = document.getElementById('hoverDiv');
+    hoverDiv.addEventListener('mouseover', () => hoverDiv.classList.add('hovered'));
+    hoverDiv.addEventListener('mouseout', () => hoverDiv.classList.remove('hovered'));
+});
+</script>
+
+</body>
+</html>

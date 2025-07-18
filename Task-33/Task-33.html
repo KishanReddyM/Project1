@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM & Events Showcase</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        h2 { border-bottom: 2px solid #007bff; padding-bottom: 5px; margin-top: 40px; color: #007bff;}
+        h3 { color: #555; }
+        div, button, input, section, ul, li, select, table { margin: 10px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .card { background-color: #f9f9f9; }
+        table, th, td { border: 1px solid black; border-collapse: collapse; padding: 8px; text-align: left;}
+        #hoverBox { background-color: lightcoral; height: 50px; }
+        #propagation-parent { background-color: lightblue; }
+        #propagation-child { background-color: lightgreen; margin: 20px; text-align: center; }
+        #opacityImg { transition: opacity 0.3s; }
+        #sizeToggleBox { background-color: #ffc107; height: 100px; width: 100px; transition: all 0.3s; cursor: pointer; }
+        #sizeToggleBox.large { height: 150px; width: 150px; background-color: #e91e63; }
+    </style>
+</head>
+<body>
+
+    <h1>DOM Creation, Removal & Events</h1>
+
+    <h2>Part 1: Creating & Removing Elements</h2>
+
+    <h3>📥 Creating Elements</h3>
+    <ul id="todoList"><li>Existing item</li></ul>
+    <div id="imageContainer"><h3>Task 4: Image will appear here</h3></div>
+    <div id="buttonContainer"><h3>Task 5: Button will be added here</h3></div>
+    <ul id="loopList"><h3>Task 6: List for looped items</h3></ul>
+    <section id="appendSection"><h3>Task 7: H3 will be inserted here using append()</h3></section>
+    <div class="card">A card.</div>
+    <div class="card">Another card.</div>
+    <select id="mySelect"><option>-- Task 9: Option will be added --</option></select>
+    <table id="myTable"><tbody><tr><th>Col 1</th><th>Col 2</th><th>Col 3</th></tr></tbody></table>
+
+    <h3>🗑 Removing Elements</h3>
+    <p id="removeMe">Task 11: I will be removed.</p>
+    <div id="parent">I am the parent.<div id="child">Task 12: I am the child to be removed.</div></div>
+    <div class="card" id="card-to-delete">Task 13: This whole card will be deleted. <button id="deleteCardBtn">Delete Me</button></div>
+    <ul id="removalList"><li>Item 1</li><li class="task-14">Item 2 (done)</li><li>Item 3</li><li class="task-14">Item 4 (done)</li></ul>
+    <div id="clearContainer"> <p>Content 1</p> <p>Content 2</p> </div>
+    <button id="resetBtn">Task 15: Clear container above</button>
+
+    <hr>
+
+    <h2>Part 2: Event Handling</h2>
+    
+    <h3>🧷 Adding & Removing Event Listeners</h3>
+    <button id="clickBtn">Task 16: Click Me (Logs to console)</button>
+    <div id="hoverBox">Task 17: Mouseover me to change color</div>
+    <input id="inputField" type="text" placeholder="Task 18: Type here, see console">
+    <button id="sayHiBtn">Task 19: Say Hi!</button>
+    <button id="removeListenerBtn">Task 20: Click me ONCE</button>
+    <div id="button-delegate-container">
+        <h3>Task 21: Click any button below</h3>
+        <button class="delegate">Button A</button> <button class="delegate">Button B</button>
+    </div>
+
+    <h3>📦 Event Object Properties</h3>
+    <div id="target-container"><h3>Task 22: Click anything inside this box.</h3><p>Paragraph</p><button>Button</button></div>
+    <div id="currentTarget-container">Task 23: Outer Div (Listener Attached Here)
+        <button id="nested-btn">Inner Button</button>
+    </div>
+    <form id="myForm">
+        <input type="text" required placeholder="Task 24: Try to submit"> <button type="submit">Submit</button>
+        <p id="form-message" style="color:red;"></p>
+    </form>
+    <div id="propagation-parent">Task 25: Parent Div. Click the child.
+        <div id="propagation-child">Child Div (stops propagation)</div>
+    </div>
+    
+    <hr>
+
+    <h2>Part 3: Common Events</h2>
+    <select id="onchange-select">
+        <option>Pick a Fruit</option><option>Apple</option><option>Banana</option>
+    </select>
+    <p>Task 26 - You selected: <span id="select-output">nothing</span></p>
+    <button id="onclick-btn">Task 27: Click to change page color</button>
+    <input id="oninput-search" placeholder="Task 28: Live search input">
+    <p>You are typing: <span id="search-output"></span></p>
+    <img id="opacityImg" src="https://via.placeholder.com/150" alt="Task 29: Hover me">
+    <div id="sizeToggleBox">Task 30: Double-click me</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 🟩 Part 1: Creating & Removing Elements 🟩
+    // ===========================================
+
+    // Task 1: Create a <p> element and log it
+    const newP = document.createElement('p');
+    console.log("Task 1: Created element:", newP);
+
+    // Task 2: Create a <div> with text and append to body
+    const newDiv = document.createElement('div');
+    newDiv.textContent = 'Task 2: Hello DOM, I was created and appended to the body.';
+    document.body.append(newDiv);
+
+    // Task 3: Create an <li> and append it to an existing <ul>
+    const newLi = document.createElement('li');
+    newLi.textContent = "Task 3: I'm a new to-do item.";
+    document.getElementById('todoList').append(newLi);
+
+    // Task 4: Create an <img>, set src, and append
+    const newImg = document.createElement('img');
+    newImg.setAttribute('src', 'https://via.placeholder.com/100/007bff/FFFFFF?text=Task+4');
+    document.getElementById('imageContainer').append(newImg);
+    
+    // Task 5: Add a new <button> inside a div
+    const newBtn = document.createElement('button');
+    newBtn.textContent = 'Task 5: Click Me';
+    document.getElementById('buttonContainer').append(newBtn);
+
+    // Task 6: Append multiple <li> elements using a loop
+    const loopList = document.getElementById('loopList');
+    for (let i = 1; i <= 3; i++) {
+        const item = document.createElement('li');
+        item.textContent = `Task 6: Looped Item #${i}`;
+        loopList.append(item);
+    }
+    
+    // Task 7: Create an <h3> and insert using append()
+    const newH3 = document.createElement('h3');
+    newH3.textContent = "I'm a new H3 added with .append()!";
+    document.getElementById('appendSection').append(newH3);
+
+    // Task 8: Append a new paragraph inside all elements with class .card
+    document.querySelectorAll('.card').forEach(card => {
+        const cardP = document.createElement('p');
+        cardP.textContent = "Task 8: Appended to every card.";
+        cardP.style.color = 'green';
+        card.append(cardP);
+    });
+
+    // Task 9: Add a new <option> to a <select>
+    const newOption = document.createElement('option');
+    newOption.value = 'task9';
+    newOption.textContent = 'Task 9: New Option';
+    document.getElementById('mySelect').append(newOption);
+    
+    // Task 10: Dynamically build and append a table row
+    const tableBody = document.querySelector('#myTable tbody');
+    const newRow = document.createElement('tr');
+    for(let i = 1; i <= 3; i++) {
+        const cell = document.createElement('td');
+        cell.textContent = `Task 10: Cell ${i}`;
+        newRow.append(cell);
+    }
+    tableBody.append(newRow);
+
+    // Task 11: Select and remove a specific element
+    document.getElementById('removeMe')?.remove();
+
+    // Task 12: Remove a child node from a parent
+    const parentEl = document.getElementById('parent');
+    const childEl = document.getElementById('child');
+    if (parentEl && childEl) parentEl.removeChild(childEl);
+
+    // Task 13: Add a button that deletes a card
+    document.getElementById('deleteCardBtn').addEventListener('click', () => {
+        document.getElementById('card-to-delete').remove();
+    });
+
+    // Task 14: Loop and remove <li>s containing "done"
+    document.querySelectorAll('#removalList li').forEach(item => {
+        if (item.textContent.includes('done')) {
+            item.remove();
+        }
+    });
+
+    // Task 15: Create a reset button to clear a container
+    document.getElementById('resetBtn').addEventListener('click', () => {
+        document.getElementById('clearContainer').innerHTML = '';
+    });
+
+
+    // 🟩 Part 2: Event Handling 🟩
+    // =============================
+    console.log("\n--- Part 2: Event Handling ---");
+
+    // Task 16: Add a click event listener
+    document.getElementById('clickBtn').addEventListener('click', () => {
+        console.log("Task 16: Button clicked!");
+    });
+
+    // Task 17: Add a mouseover event
+    document.getElementById('hoverBox').addEventListener('mouseover', (event) => {
+        event.target.style.backgroundColor = 'gold';
+    });
+
+    // Task 18: Add an input event
+    document.getElementById('inputField').addEventListener('input', (event) => {
+        console.log("Task 18:", event.target.value);
+    });
+
+    // Task 19: Create a function and attach it to a click
+    function sayHi() { alert('Task 19: Hi there!'); }
+    document.getElementById('sayHiBtn').addEventListener('click', sayHi);
+
+    // Task 20: Remove an event listener after 1st click
+    const removeListenerBtn = document.getElementById('removeListenerBtn');
+    function onceHandler() {
+        alert('Task 20: This message appears only once.');
+        removeListenerBtn.removeEventListener('click', onceHandler);
+    }
+    removeListenerBtn.addEventListener('click', onceHandler);
+
+    // Task 21: Use one event handler for multiple buttons
+    document.getElementById('button-delegate-container').addEventListener('click', (event) => {
+        if (event.target.classList.contains('delegate')) {
+            console.log(`Task 21: You clicked "${event.target.textContent}"`);
+        }
+    });
+
+    // Task 22: Use event.target
+    document.getElementById('target-container').addEventListener('click', (event) => {
+        console.log("Task 22: event.target is", event.target);
+    });
+    
+    // Task 23: Use event.currentTarget and event.target
+    document.getElementById('currentTarget-container').addEventListener('click', (event) => {
+        console.log("Task 23: event.target is", event.target);
+        console.log("Task 23: event.currentTarget is", event.currentTarget);
+    });
+
+    // Task 24: Prevent form submission with event.preventDefault()
+    document.getElementById('myForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        document.getElementById('form-message').textContent = 'Task 24: Submission prevented!';
+    });
+
+    // Task 25: Stop event bubbling with event.stopPropagation()
+    document.getElementById('propagation-parent').addEventListener('click', () => {
+        alert('Parent clicked! This should NOT appear if child is clicked.');
+    });
+    document.getElementById('propagation-child').addEventListener('click', (event) => {
+        event.stopPropagation();
+        alert('Task 25: Child clicked, propagation stopped.');
+    });
+
+
+    // 🟦 Part 3: Common Events 🟦
+    // ============================
+    // Task 26: Use onchange on a <select>
+    document.getElementById('onchange-select').onchange = function() {
+        document.getElementById('select-output').textContent = this.value;
+    };
+
+    // Task 27: Use onclick on a button
+    document.getElementById('onclick-btn').onclick = function() {
+        document.body.style.backgroundColor = document.body.style.backgroundColor === 'lavender' ? 'white' : 'lavender';
+    };
+
+    // Task 28: Use oninput on a search field
+    document.getElementById('oninput-search').oninput = function() {
+        document.getElementById('search-output').textContent = this.value;
+    };
+    
+    // Task 29: Use onmouseover and onmouseout
+    const opacityImg = document.getElementById('opacityImg');
+    opacityImg.onmouseover = function() { this.style.opacity = '0.5'; };
+    opacityImg.onmouseout = function() { this.style.opacity = '1'; };
+
+    // Task 30: Use ondblclick on a box
+    document.getElementById('sizeToggleBox').ondblclick = function() {
+        this.classList.toggle('large');
+    };
+});
+</script>
+
+</body>
+</html>
