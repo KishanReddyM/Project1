@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dynamic To-Do List</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f0f0f0;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .dark {
+      background: #121212;
+      color: #eee;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    .dark .container {
+      background: #1e1e1e;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1rem;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem;
+      margin-bottom: 0.5rem;
+      background: #f9f9f9;
+      border-radius: 5px;
+    }
+
+    .dark li {
+      background: #2c2c2c;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      color: gray;
+    }
+
+    .actions button {
+      margin-left: 5px;
+      background: transparent;
+      color: inherit;
+    }
+
+    .actions button:hover {
+      color: red;
+    }
+
+    .task-count {
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .dark-mode-toggle {
+      float: right;
+      margin: 0.5rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="dark-mode-toggle">
+    🌙 <input type="checkbox" id="darkToggle">
+  </div>
+
+  <div class="container">
+    <h1>To-Do List</h1>
+    <form id="todoForm">
+      <input type="text" id="taskInput" placeholder="Add new task..." required />
+      <button type="submit">Add</button>
+    </form>
+    <ul id="taskList"></ul>
+    <div class="task-count" id="taskCount">Total: 0 | Completed: 0</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('todoForm');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
+    const taskCount = document.getElementById('taskCount');
+    const darkToggle = document.getElementById('darkToggle');
+
+    let tasks = [];
+
+    function renderTasks() {
+      taskList.innerHTML = '';
+      let completed = 0;
+
+      tasks.forEach((task, index) => {
+        const li = document.createElement('li');
+
+        const span = document.createElement('span');
+        span.textContent = task.text;
+        if (task.done) span.classList.add('completed');
+        span.addEventListener('click', () => toggleComplete(index));
+        li.appendChild(span);
+
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+
+        const editBtn = document.createElement('button');
+        editBtn.textContent = '✏️';
+        editBtn.onclick = () => editTask(index);
+        actions.appendChild(editBtn);
+
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = '🗑️';
+        deleteBtn.onclick = () => deleteTask(index);
+        actions.appendChild(deleteBtn);
+
+        li.appendChild(actions);
+        taskList.appendChild(li);
+
+        if (task.done) completed++;
+      });
+
+      taskCount.textContent = `Total: ${tasks.length} | Completed: ${completed}`;
+    }
+
+    function addTask(e) {
+      e.preventDefault();
+      const text = taskInput.value.trim();
+      if (text) {
+        tasks.push({ text, done: false });
+        taskInput.value = '';
+        renderTasks();
+      }
+    }
+
+    function toggleComplete(index) {
+      tasks[index].done = !tasks[index].done;
+      renderTasks();
+    }
+
+    function editTask(index) {
+      const newText = prompt('Edit task:', tasks[index].text);
+      if (newText !== null && newText.trim() !== '') {
+        tasks[index].text = newText.trim();
+        renderTasks();
+      }
+    }
+
+    function deleteTask(index) {
+      tasks.splice(index, 1);
+      renderTasks();
+    }
+
+    darkToggle.addEventListener('change', () => {
+      document.body.classList.toggle('dark');
+    });
+
+    form.addEventListener('submit', addTask);
+  </script>
+</body>
+</html>
