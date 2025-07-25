@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Management System - kishan reddy</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #38598b; }
+        .section { border: 1px solid #eee; padding: 16px; border-radius: 8px; margin-bottom: 24px; }
+        label { display: block; margin-top: 10px; }
+        input, select { padding: 6px; border-radius: 4px; border: 1px solid #ccc; }
+        table { border-collapse: collapse; width: 100%; margin-top: 12px;}
+        td, th { border: 1px solid #ddd; padding: 8px;}
+        th { background-color: #b6d4fe;}
+        .btn { padding: 7px 18px; background: #2e69ff; color: #fff; border: none; border-radius: 4px; margin-top: 8px;}
+        .btn:hover { background: #234db9;}
+    </style>
+</head>
+<body>
+    <h1>Patient Management System</h1>
+
+    <div class="section">
+        <h2>1. Register Patient</h2>
+        <form id="patientForm">
+            <label>Full Name:
+                <input type="text" id="patientName" value="kishan reddy" required>
+            </label>
+            <label>Age:
+                <input type="number" id="patientAge" value="30" min="0" required>
+            </label>
+            <label>Gender:
+                <select id="patientGender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select>
+            </label>
+            <label>Emergency Contact:
+                <input type="text" id="emergencyContact" value="9876543210" required>
+            </label>
+            <button type="submit" class="btn">Register</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>2. Doctors by Specialty</h2>
+        <form id="doctorForm">
+            <label>Name:
+                <input type="text" id="doctorName" value="Dr. Smith" required>
+            </label>
+            <label>Specialty:
+                <input type="text" id="doctorSpecialty" value="Cardiology" required>
+            </label>
+            <button type="submit" class="btn">Add Doctor</button>
+        </form>
+        <div id="doctorList"></div>
+    </div>
+
+    <div class="section">
+        <h2>3. Schedule Appointment</h2>
+        <form id="appointmentForm">
+            <label>Patient:
+                <select id="appointmentPatient">
+                    <option>kishan reddy</option>
+                </select>
+            </label>
+            <label>Doctor:
+                <select id="appointmentDoctor">
+                    <option>Dr. Smith</option>
+                </select>
+            </label>
+            <label>Date:
+                <input type="date" id="appointmentDate" value="2025-07-30" required>
+            </label>
+            <button type="submit" class="btn">Schedule</button>
+        </form>
+        <div id="appointmentList"></div>
+    </div>
+
+    <div class="section">
+        <h2>4. Prescriptions & Diagnoses for "kishan reddy"</h2>
+        <form id="prescriptionForm">
+            <label>Prescription:
+                <input type="text" id="prescription" value="Medicine A - 10mg twice daily">
+            </label>
+            <button type="submit" class="btn">Add Prescription</button>
+        </form>
+        <ul id="prescriptionList"></ul>
+        <form id="diagnosisForm">
+            <label>Diagnosis:
+                <input type="text" id="diagnosis" value="Hypertension">
+            </label>
+            <button type="submit" class="btn">Add Diagnosis</button>
+        </form>
+        <ul id="diagnosisList"></ul>
+    </div>
+
+    <div class="section">
+        <h2>5. Billing Summary for "kishan reddy"</h2>
+        <form id="billingForm">
+            <label>Description:
+                <input type="text" id="billingDesc" value="Consultation Fee">
+            </label>
+            <label>Amount ($):
+                <input type="number" id="billingAmount" value="50" min="0">
+            </label>
+            <button type="submit" class="btn">Add Charge</button>
+        </form>
+        <table id="billingTable">
+            <tr>
+                <th>Description</th>
+                <th>Amount ($)</th>
+            </tr>
+        </table>
+        <h3 id="totalAmount">Total: $0.00</h3>
+    </div>
+
+    <div class="section">
+        <h2>6. Emergency Contact</h2>
+        <p>Emergency contact for <b>kishan reddy</b>: <span id="emergencyInfo">9876543210</span></p>
+    </div>
+
+<script>
+let doctors = [{name: "Dr. Smith", specialty: "Cardiology"}];
+let appointments = [];
+let prescriptions = ["Medicine A - 10mg twice daily"];
+let diagnoses = ["Hypertension"];
+let billing = [{desc: "Consultation Fee", amount: 50}];
+
+function updateDoctorList() {
+    const docList = document.getElementById("doctorList");
+    let html = "<b>Doctor List:</b><ul>";
+    doctors.forEach(doc => {
+        html += `<li>${doc.name} (${doc.specialty})</li>`;
+    });
+    html += "</ul>";
+    docList.innerHTML = html;
+    // Also update doctor dropdown
+    const doctorDropdown = document.getElementById("appointmentDoctor");
+    doctorDropdown.innerHTML = doctors.map(d => `<option>${d.name}</option>`).join('');
+}
+
+// Doctors
+document.getElementById("doctorForm").onsubmit = e => {
+    e.preventDefault();
+    let name = document.getElementById("doctorName").value;
+    let spec = document.getElementById("doctorSpecialty").value;
+    doctors.push({name, specialty: spec});
+    updateDoctorList();
+};
+// Appointment
+function updateAppointmentList() {
+    let div = document.getElementById("appointmentList");
+    div.innerHTML = "<b>Scheduled Appointments:</b><ul>" + appointments.map(a=>
+        `<li>${a.patient} with ${a.doctor} on ${a.date}</li>`
+    ).join("") + "</ul>";
+}
+document.getElementById("appointmentForm").onsubmit = e => {
+    e.preventDefault();
+    let patient = document.getElementById("appointmentPatient").value;
+    let doctor = document.getElementById("appointmentDoctor").value;
+    let date = document.getElementById("appointmentDate").value;
+    appointments.push({patient, doctor, date});
+    updateAppointmentList();
+};
+// Prescriptions
+function updatePrescriptions() {
+    document.getElementById("prescriptionList").innerHTML = prescriptions.map(p => `<li>${p}</li>`).join('');
+}
+document.getElementById("prescriptionForm").onsubmit = e => {
+    e.preventDefault();
+    let presc = document.getElementById("prescription").value;
+    prescriptions.push(presc);
+    updatePrescriptions();
+};
+// Diagnoses
+function updateDiagnoses() {
+    document.getElementById("diagnosisList").innerHTML = diagnoses.map(d => `<li>${d}</li>`).join('');
+}
+document.getElementById("diagnosisForm").onsubmit = e => {
+    e.preventDefault();
+    let diag = document.getElementById("diagnosis").value;
+    diagnoses.push(diag);
+    updateDiagnoses();
+};
+// Billing
+function updateBilling() {
+    let table = document.getElementById("billingTable");
+    // Clear rows except header
+    table.innerHTML = `<tr><th>Description</th><th>Amount ($)</th></tr>`;
+    let total = 0;
+    billing.forEach(item => {
+        table.innerHTML += `<tr><td>${item.desc}</td><td>${item.amount.toFixed(2)}</td></tr>`;
+        total += Number(item.amount);
+    });
+    document.getElementById("totalAmount").innerText = "Total: $" + total.toFixed(2);
+}
+document.getElementById("billingForm").onsubmit = e => {
+    e.preventDefault();
+    let desc = document.getElementById("billingDesc").value;
+    let amt = parseFloat(document.getElementById("billingAmount").value);
+    billing.push({desc, amount: amt});
+    updateBilling();
+};
+// Patient
+document.getElementById("patientForm").onsubmit = e => {
+    e.preventDefault();
+    let name = document.getElementById("patientName").value;
+    let age = document.getElementById("patientAge").value;
+    let gender = document.getElementById("patientGender").value;
+    let emer = document.getElementById("emergencyContact").value;
+    document.getElementById("appointmentPatient").innerHTML = `<option>${name}</option>`;
+    document.getElementById("emergencyInfo").innerText = emer;
+    alert(`Patient "${name}" registered!`);
+};
+
+// Initial setup
+updateDoctorList();
+updateAppointmentList();
+updatePrescriptions();
+updateDiagnoses();
+updateBilling();
+</script>
+</body>
+</html>
